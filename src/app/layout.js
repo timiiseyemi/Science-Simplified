@@ -1,3 +1,4 @@
+import { tenant } from "@/lib/config";
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer/Footer";

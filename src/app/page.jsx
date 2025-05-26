@@ -1,5 +1,6 @@
 "use client";
 
+import { tenant } from "@/lib/config";
 import "./Home.scss";
 import Navbar from "@/components/Navbar/Navbar";
 
@@ -37,14 +38,14 @@ export default function Home() {
                         <div className="home__hero__content">
                             <div className="flex flex-col gap-1">
                                 <h1 className="heading-primary">
-                                    Neurofibromatosis
+                                    {tenant.disease}
                                 </h1>
                                 <h2 className="heading-tertiary w-400 color-green">
                                     Information Made Simple
                                 </h2>
                             </div>
                             <p className="body-large">
-                                Collection of simplified NF articles certified
+                                Collection of simplified {tenant.acronym} articles certified
                                 by experts.{" "}
                                 <span className="w-700 color-green-dark">
                                     Powered by Innovation.

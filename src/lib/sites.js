@@ -12,7 +12,8 @@ export const sites = {
         primaryDark: "#3e5154",
         lightGrey: "#f5f5f5",
         text: "#0b1618",
-        background: "#f8fdff"
+        background: "#f8fdff",
+        contactUsColor: "#4cb19f", //contactUsColor
       },
       homeBG: "NF_homeBG.webp", //home/homeBG
       homeExploreAllBG: "NF_ExploreAllBG.webp", //home/homeExploreAllBG
@@ -20,7 +21,6 @@ export const sites = {
       articleThumbnailPlaceholder: "NF_articleThumbnailPlaceholder.webp", //articleThumbnailPlaceholder
       contactUsBGLeft: "NF_contactUsBGLeft.png", //contactUsBGLeft
       contactUsBGRight: "NF_contactUsBGRight.png", //contactUsBGRight
-      contactUsColor: "#4cb19f", //contactUsColor
     },
     EB: {
       name: "EB Simplified",
@@ -35,7 +35,8 @@ export const sites = {
         primaryDark: "#871750",
         lightGrey: "#f5f5f5",
         text: "#484753",
-        background: "#ffffff"
+        background: "#ffffff",
+        contactUsColor: "#ed1e87", //contactUsColor
       },
       homeBG: "EB_homeBG.png", //home/homeBG
       homeExploreAllBG: "EB_ExploreAllBG.png", //home/homeExploreAllBG
@@ -43,7 +44,7 @@ export const sites = {
       articleThumbnailPlaceholder: "EB_articleThumbnailPlaceholder.jpg", //articleThumbnailPlaceholder
       contactUsBGLeft: "EB_contactUsBGLeft.png", //contactUsBGLeft
       contactUsBGRight: "EB_contactUsBGRight.png", //contactUsBGRight
-      contactUsColor: "#ed1e87", //contactUsColor
+      
     },
     // …add more here…
   };

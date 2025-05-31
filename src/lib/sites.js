@@ -19,8 +19,8 @@ export const sites = {
       homeExploreAllBG: "NF_ExploreAllBG.webp", //home/homeExploreAllBG
       logoWithText: "NF_logoWithText.png", //logoWithText
       articleThumbnailPlaceholder: "NF_articleThumbnailPlaceholder.webp", //articleThumbnailPlaceholder
-      contactUsBGLeft: "NF_contactUsBGLeft.png", //contactUsBGLeft
-      contactUsBGRight: "NF_contactUsBGRight.png", //contactUsBGRight
+      contactUsBGLeft: "NF_contactUsBGLeft.webp", //contactUsBGLeft
+      contactUsBGRight: "NF_contactUsBGRight.webp", //contactUsBGRight
     },
     EB: {
       name: "EB Simplified",

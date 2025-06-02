@@ -399,13 +399,13 @@ const AddArticleForm = () => {
 
             <div className="add-article-form__row">
                 <div className="add-article-form__field">
-                    <Label
+                    <Label hidden={true}
                         htmlFor="simplifyLength"
                         className="add-article-form__label"
                     >
                         Simplify Length
                     </Label>
-                    <Input
+                    <Input hidden={true}
                         id="simplifyLength"
                         type="number"
                         className="add-article-form__input"
@@ -416,13 +416,13 @@ const AddArticleForm = () => {
                     />
                 </div>
                 <div className="add-article-form__field">
-                    <Label
+                    <Label hidden={true}
                         htmlFor="simplifyUnit"
                         className="add-article-form__label"
                     >
                         Unit
                     </Label>
-                    <Select
+                    <Select hidden={true}
                         value={simplifyUnit}
                         onValueChange={(value) => setSimplifyUnit(value)}
                     >

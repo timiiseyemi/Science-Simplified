@@ -48,7 +48,7 @@ export const sites = {
         authorTextColor: "#4c85b1", //authorTextColor
         footerBGColor: "#f2e6f8", //footerBGColor
       },
-      homeBG: "EB_homeBG.png", //home/homeBG
+      homeBG: "EB_croppedbanner.png", //home/homeBG
       homeExploreAllBG: "EB_ExploreAllBG.png", //home/homeExploreAllBG
       logoWithText: "EB_logoWithText.png", //logoWithText
       articleThumbnailPlaceholder: "EB_articleThumbnailPlaceholder.jpg", //articleThumbnailPlaceholder
@@ -56,6 +56,7 @@ export const sites = {
       contactUsBGRight: "EB_contactUsBGRight.png", //contactUsBGRight
       loginBGTop: "EB_loginBGTop.webp", //loginBGTop
       loginBGBottom: "EB_loginBGBottom.webp", //loginBGTop
+
       //text
       text_exploreAllTitle: "We give knowledge to EB patients, families, and caregivers",
       text_exploreAllDescription: "Collection of simplified EB articles certified by experts.",

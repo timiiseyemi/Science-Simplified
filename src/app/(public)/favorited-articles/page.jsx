@@ -21,7 +21,7 @@ const FavoritedArticles = () => {
     const fetchFavoritedArticles = async () => {
         try {
             const response = await fetch(
-                `/api/articles/favorited?userId=${userId}`
+                `/api/articles/liked?userId=${userId}`
             );
             if (!response.ok) {
                 const { message } = await response.json();

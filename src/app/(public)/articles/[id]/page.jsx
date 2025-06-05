@@ -36,7 +36,7 @@ const ArticlePage = ({ params }) => {
         if (!userId) return;
         try {
             const res = await fetch(
-                `/api/articles/${id}/favorite?userId=${userId}`,
+                `/api/articles/${id}/like?userId=${userId}`,
                 {
                     method: "GET",
                 }
@@ -72,7 +72,7 @@ const ArticlePage = ({ params }) => {
 
         try {
             const method = prevIsFavorited ? "DELETE" : "POST";
-            const res = await fetch(`/api/articles/${id}/favorite`, {
+            const res = await fetch(`/api/articles/${id}/like`, {
                 method,
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ userId }),

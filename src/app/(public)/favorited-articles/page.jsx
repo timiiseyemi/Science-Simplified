@@ -94,4 +94,4 @@ const FavoritedArticles = () => {
     );
 };
 
-export default LikedArticles;
+export default FavoritedArticles;

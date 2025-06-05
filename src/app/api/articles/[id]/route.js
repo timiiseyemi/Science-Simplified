@@ -16,7 +16,7 @@ export async function GET(request, { params }) {
             );
         }
 
-        // Fetch the article, selected profile fields, and like count
+        // Fetch the article, selected profile fields, and favorite count
         const articleResult = await query(
             `
             SELECT 
@@ -39,7 +39,7 @@ export async function GET(request, { params }) {
 
         // Check if the article exists
         if (articleResult.rows.length > 0) {
-            return NextResponse.json(articleResult.rows[0]); // Send article with profile data and like count
+            return NextResponse.json(articleResult.rows[0]); // Send article with profile data and Favorite count
         } else {
             return NextResponse.json(
                 { success: false, message: "Article not found" },

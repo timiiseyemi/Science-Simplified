@@ -8,9 +8,9 @@ import { ArticleCardSkeleton } from "@/components/ArticleCardSkeleton/ArticleCar
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import useAuthStore from "@/store/useAuthStore";
-import "./LikedArticles.scss";
+import "./FavoritedArticles.scss";
 
-const LikedArticles = () => {
+const FavoritedArticles = () => {
     const [articles, setArticles] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -18,10 +18,10 @@ const LikedArticles = () => {
     const { user } = useAuthStore();
     const { userId } = user || {};
 
-    const fetchLikedArticles = async () => {
+    const fetchFavoritedArticles = async () => {
         try {
             const response = await fetch(
-                `/api/articles/liked?userId=${userId}`
+                `/api/articles/favorited?userId=${userId}`
             );
             if (!response.ok) {
                 const { message } = await response.json();
@@ -30,9 +30,9 @@ const LikedArticles = () => {
             const data = await response.json();
             setArticles(data);
         } catch (error) {
-            console.error("Error fetching liked articles:", error);
+            console.error("Error fetching favorited articles:", error);
             setError(true);
-            toast.error(error.message || "Failed to fetch liked articles");
+            toast.error(error.message || "Failed to fetch favorited articles");
         } finally {
             setLoading(false);
         }
@@ -42,43 +42,43 @@ const LikedArticles = () => {
         if (typeof userId === "undefined") {
             setLoading(true); // Wait for userId to resolve
         } else if (userId) {
-            fetchLikedArticles();
+            fetchFavoritedArticles();
         } else {
             setLoading(false);
             setError(true);
-            toast.info("Please log in to view liked articles.");
+            toast.info("Please log in to view favorited articles.");
         }
     }, [userId]);
 
     return (
-        <div className="liked-articles">
+        <div className="favorited-articles">
             <Navbar />
             <ToastContainer />
-            <div className="liked-articles__content padding">
+            <div className="favorited-articles__content padding">
                 <div className="boxed">
-                    <h1 className="liked-articles__title heading-tertiary">
-                        Your Liked Articles
+                    <h1 className="favorited-articles__title heading-tertiary">
+                        Your Favorited Articles
                     </h1>
                     {loading ? (
-                        <div className="liked-articles__loading">
+                        <div className="favorited-articles__loading">
                             {[...Array(6)].map((_, index) => (
                                 <ArticleCardSkeleton key={index} />
                             ))}
                         </div>
                     ) : error ? (
-                        <div className="liked-articles__error">
-                            <Unplug className="liked-articles__error__icon" />
+                        <div className="favorited-articles__error">
+                            <Unplug className="favorited-articles__error__icon" />
                             <p className="body-large">
                                 {userId
                                     ? "Something went wrong. Please try again later."
-                                    : "Please log in to view your liked articles."}
+                                    : "Please log in to view your favorited articles."}
                             </p>
                         </div>
                     ) : articles.length === 0 ? (
-                        <div className="liked-articles__error">
-                            <Unplug className="liked-articles__error__icon" />
+                        <div className="favorited-articles__error">
+                            <Unplug className="favorited-articles__error__icon" />
                             <p className="body-large">
-                                You haven’t liked any articles yet.
+                                You haven’t favorited any articles yet.
                             </p>
                         </div>
                     ) : (

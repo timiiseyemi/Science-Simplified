@@ -37,7 +37,7 @@ function Navbar() {
         ...(user
             ? [
                   { name: "Profile", path: "/profile" },
-                  { name: "Liked Articles", path: "/liked-articles" },
+                  { name: "Favorited Articles", path: "/favorited-articles" },
               ]
             : []), // Show Profile link if logged in
     ];

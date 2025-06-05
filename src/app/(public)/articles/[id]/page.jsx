@@ -24,55 +24,55 @@ const ArticlePage = ({ params }) => {
     const [error, setError] = useState(null);
     const [deleting, setDeleting] = useState(false);
 
-    // Like state
-    const [isLiked, setIsLiked] = useState(false);
-    const [liking, setLiking] = useState(false);
+    // Favorite state
+    const [isFavorited, setIsFavorited] = useState(false);
+    const [favoriting, setFavoriting] = useState(false);
 
     const { isAdmin, user } = useAuthStore(); // Access user and admin state from Zustand
     const { email, userId, name } = user || {};
 
-    // Fetch the like status for the article
-    const fetchLikeStatus = async () => {
+    // Fetch the favorite status for the article
+    const fetchFavoriteStatus = async () => {
         if (!userId) return;
         try {
             const res = await fetch(
-                `/api/articles/${id}/like?userId=${userId}`,
+                `/api/articles/${id}/favorite?userId=${userId}`,
                 {
                     method: "GET",
                 }
             );
             const { success, data, message } = await res.json();
             if (!success) throw new Error(message);
-            setIsLiked(data.isLiked || false);
+            setIsFavorited(data.isFavorited || false);
         } catch (e) {
-            console.error("Error fetching like status:", e);
+            console.error("Error fetching favorite status:", e);
         }
     };
 
-    // Toggle like/unlike with optimistic update
-    const toggleLikeArticle = async () => {
+    // Toggle favorite/unfavorite with optimistic update
+    const toggleFavoriteArticle = async () => {
         if (!userId) {
-            toast.info("Please log in to like articles.");
+            toast.info("Please log in to favorite articles.");
             return;
         }
 
         // Store previous state for rollback
-        const prevIsLiked = isLiked;
-        const prevLikeCount = Number(article?.like_count || 0); // Ensure number
+        const prevIsFavorited = isFavorited;
+        const prevFavoriteCount = Number(article?.favorite_count || 0); // Ensure number
 
         // Optimistic update
-        setLiking(true);
-        setIsLiked(!isLiked);
+        setFavoriting(true);
+        setIsFavorited(!isFavorited);
         setArticle((prev) => ({
             ...prev,
-            like_count: prevIsLiked
-                ? Number(prev.like_count) - 1
-                : Number(prev.like_count) + 1, // Ensure numeric operation
+            favorite_count: prevIsFavorited
+                ? Number(prev.favorite_count) - 1
+                : Number(prev.favorite_count) + 1, // Ensure numeric operation
         }));
 
         try {
-            const method = prevIsLiked ? "DELETE" : "POST";
-            const res = await fetch(`/api/articles/${id}/like`, {
+            const method = prevIsFavorited ? "DELETE" : "POST";
+            const res = await fetch(`/api/articles/${id}/favorite`, {
                 method,
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ userId }),
@@ -86,17 +86,17 @@ const ArticlePage = ({ params }) => {
             const updatedArticle = await response.json();
             setArticle(updatedArticle);
 
-            toast.success(prevIsLiked ? "Article unliked!" : "Article liked!");
+                toast.success(prevIsFavorited ? "Article unfavorited!" : "Article favorited!");
         } catch (e) {
             // Revert optimistic update on error
-            setIsLiked(prevIsLiked);
+            setIsFavorited(prevIsFavorited);
             setArticle((prev) => ({
                 ...prev,
-                like_count: prevLikeCount,
+                favorite_count: prevFavoriteCount,
             }));
             toast.error(e.message || "Action failed");
         } finally {
-            setLiking(false);
+            setFavoriting(false);
         }
     };
 
@@ -107,8 +107,8 @@ const ArticlePage = ({ params }) => {
                 if (!response.ok) throw new Error("Error fetching article");
 
                 const data = await response.json();
-                // Ensure like_count is a number
-                setArticle({ ...data, like_count: Number(data.like_count) });
+                // Ensure favorite_count is a number
+                setArticle({ ...data, favorite_count: Number(data.favorite_count) });
             } catch (err) {
                 setError(err.message);
                 toast.error(err.message);
@@ -118,7 +118,7 @@ const ArticlePage = ({ params }) => {
         };
 
         fetchArticle();
-        if (userId) fetchLikeStatus(); // Fetch like status when user is logged in
+        if (userId) fetchFavoriteStatus(); // Fetch favorite status when user is logged in
     }, [id, userId]);
 
     const handleDelete = async () => {
@@ -213,28 +213,28 @@ const ArticlePage = ({ params }) => {
                                         </div>
                                         <div className="md:ml-auto flex items-center space-x-2">
                                             {user &&
-                                                (liking ? (
+                                                (favoriting ? (
                                                     <Loader2 className="h-10 w-10 animate-spin" />
-                                                ) : isLiked ? (
+                                                ) : isFavorited ? (
                                                     <HeartFilledIcon
                                                         className="article-page__heart-filled cursor-pointer w-10 h-10"
                                                         color="red"
                                                         onClick={
-                                                            toggleLikeArticle
+                                                            toggleFavoriteArticle
                                                         }
-                                                        aria-label="Unlike article"
+                                                        aria-label="Unfavorite article"
                                                     />
                                                 ) : (
                                                     <Heart
                                                         className="article-page__heart cursor-pointer w-10 h-10"
                                                         onClick={
-                                                            toggleLikeArticle
+                                                            toggleFavoriteArticle
                                                         }
-                                                        aria-label="Like article"
+                                                        aria-label="Favorite article"
                                                     />
                                                 ))}
                                             {/* <span className="text-gray-600 text-2xl">
-                                                {Number(article?.like_count) ||
+                                                {Number(article?.favorite_count) ||
                                                     0}
                                             </span> */}
                                         </div>

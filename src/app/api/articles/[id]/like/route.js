@@ -20,17 +20,17 @@ export async function GET(req, { params }) {
         }
 
         const result = await query(
-            "SELECT EXISTS (SELECT 1 FROM article_likes WHERE user_id = $1 AND article_id = $2) AS is_liked",
+            "SELECT EXISTS (SELECT 1 FROM article_likes WHERE user_id = $1 AND article_id = $2) AS is_favorited",
             [userId, articleId]
         );
 
         return NextResponse.json({
             success: true,
-            message: "Like status fetched successfully",
-            data: { isLiked: result.rows[0].is_liked },
+            message: "Favorite status fetched successfully",
+            data: { isFavorited: result.rows[0].is_favorited },
         });
     } catch (error) {
-        console.error("Error fetching like status:", error);
+        console.error("Error fetching favorite status:", error);
         return NextResponse.json(
             { success: false, message: "Internal server error" },
             { status: 500 }
@@ -38,7 +38,7 @@ export async function GET(req, { params }) {
     }
 }
 
-// POST: Like an article
+// POST: Favorite an article
 export async function POST(req, { params }) {
     let userId;
     try {
@@ -65,15 +65,15 @@ export async function POST(req, { params }) {
         }
 
         await query("BEGIN");
-        const existingLike = await query(
+        const existingFavorite = await query(
             "SELECT * FROM article_likes WHERE user_id = $1 AND article_id = $2",
             [userId, articleId]
         );
 
-        if (existingLike.rows.length > 0) {
+        if (existingFavorite.rows.length > 0) {
             await query("ROLLBACK");
             return NextResponse.json(
-                { success: false, message: "Article already liked" },
+                { success: false, message: "Article already favorited" },
                 { status: 400 }
             );
         }
@@ -86,11 +86,11 @@ export async function POST(req, { params }) {
 
         return NextResponse.json({
             success: true,
-            message: "Article liked successfully",
+            message: "Article favorited successfully",
         });
     } catch (error) {
         await query("ROLLBACK");
-        console.error("Error liking article:", error);
+        console.error("Error favoriting article:", error);
         return NextResponse.json(
             { success: false, message: "Internal server error" },
             { status: 500 }
@@ -98,7 +98,7 @@ export async function POST(req, { params }) {
     }
 }
 
-// DELETE: Unlike an article
+// DELETE: Unfavorite an article
 export async function DELETE(req, { params }) {
     let userId;
     try {
@@ -133,7 +133,7 @@ export async function DELETE(req, { params }) {
         if (result.rows.length === 0) {
             await query("ROLLBACK");
             return NextResponse.json(
-                { success: false, message: "Like not found" },
+                { success: false, message: "Favorite not found" },
                 { status: 404 }
             );
         }
@@ -142,11 +142,11 @@ export async function DELETE(req, { params }) {
 
         return NextResponse.json({
             success: true,
-            message: "Article unliked successfully",
+            message: "Article unfavorited successfully",
         });
     } catch (error) {
         await query("ROLLBACK");
-        console.error("Error unliking article:", error);
+        console.error("Error unfavoriting article:", error);
         return NextResponse.json(
             { success: false, message: "Internal server error" },
             { status: 500 }

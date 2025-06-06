@@ -125,7 +125,7 @@ export const sites = {
       about_supporter1Name: "EBRP",
       about_supporter1Width: 200,
       about_supporter1Height: 100,
-      about_supporter1Link: "https://ebrp.org/",
+      about_supporter1Link: "https://www.ebresearch.org/",
 
       about_supporter2Logo: "reins.png",
       about_supporter2Name: "REiNS",

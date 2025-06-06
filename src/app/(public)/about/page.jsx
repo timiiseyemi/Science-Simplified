@@ -360,9 +360,7 @@ export default async function AboutPage() {
                                 Community Supporters
                             </h3>
                             <p className={textClass}>
-                                We&apos;re proud to work alongside and be
-                                supported by organizations dedicated to the {tenant.shortName}
-                                community:
+                                {tenant.about_supportersDescription}
                             </p>
                         </div>
                         <div className={`${aboutPageClass}__supporters-logos`}>

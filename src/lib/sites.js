@@ -53,7 +53,9 @@ export const sites = {
       about_teamDescription: "We are a passionate, volunteer-led team of scientists, clinicians, developers, and advocates working together to bridge the gap between research and the Neurofibromatosis community.",
       about_contributorsDescription: "We're a growing network of scientists who volunteer to edit article summaries and share the amazing research being done in Neurofibromatosis and Schwannomatosis with the community.",
       about_getInvolvedDescription: "NF Simplified is 100% volunteer-led, and we're always looking for passionate people to join us! Whether you're into web development, research, database management, design, or community outreach—there's a place for you on our team.",
-      
+      about_supportersDescription: "We're proud to work alongside and be supported by organizations dedicated to the Neurofibromatosis community",
+
+
     },
     EB: {
       name: "EB Simplified",
@@ -111,7 +113,7 @@ export const sites = {
       about_teamDescription: "We are a passionate, volunteer-led team of scientists, clinicians, developers, and advocates working together to bridge the gap between research and the EB community.",
       about_contributorsDescription: "We're a growing network of scientists who volunteer to edit article summaries and share the amazing research being done in Epidermolysis Bullosa with the community.",
       about_getInvolvedDescription: "EB Simplified is 100% volunteer-led, and we're always looking for passionate people to join us! Whether you're into web development, research, database management, design, or community outreach—there's a place for you on our team.",
-
+      about_supportersDescription: "We're proud to work alongside and be supported by organizations dedicated to the Epidermolysis Bullosa community",
       
     },
 

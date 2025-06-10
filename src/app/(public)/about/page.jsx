@@ -390,32 +390,32 @@ export default async function AboutPage() {
                                     />
                                 </div>
                             </Link>
-                            <Link
-                                hidden={tenant.about_supporter2Hidden}
-                                href={tenant.about_supporter2Link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={`${aboutPageClass}__supporter-logo`}
-                            >
-                                <Image 
+                            {!tenant.about_supporter2Hidden && (
+                                <Link
+                                    href={tenant.about_supporter2Link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={`${aboutPageClass}__supporter-logo`}
+                                >
+                                    <Image 
                                     src={`/assets/${tenant.shortName}/about/${tenant.about_supporter2Logo}`}
                                     alt={tenant.about_supporter2Name}
                                     width={tenant.about_supporter2Width}
                                     height={tenant.about_supporter2Height}
                                     className={`${aboutPageClass}__logo-image`}
-                                />
-                                <div className={`${aboutPageClass}__logo-link`}>
-                                    <p
-                                        className={`${aboutPageClass}__logo-name`}
-                                    >
-                                         {tenant.about_supporter2Name}
+                                    />
+                                    <div className={`${aboutPageClass}__logo-link`}>
+                                    <p className={`${aboutPageClass}__logo-name`}>
+                                        {tenant.about_supporter2Name}
                                     </p>
                                     <ExternalLink
                                         size={16}
                                         className={`${aboutPageClass}__external-icon`}
                                     />
-                                </div>
-                            </Link>
+                                    </div>
+                                </Link>
+                                )}
+
                         </div>
                     </section>
                 </div>

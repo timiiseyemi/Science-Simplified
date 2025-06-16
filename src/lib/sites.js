@@ -167,8 +167,8 @@ export const sites = {
       // Images (General)
       logoWithText: "CF_text_with_logo.png", //logoWithText
       articleThumbnailPlaceholder: "CF_article_placeholder.jpg", //articleThumbnailPlaceholder
-      contactUsBGLeft: "CF_contactUsBGLeft.jpg", //contactUsBGLeft # uses full width background
-      contactUsBGRight: "CF_contactUsBGLeft.jpg", //contactUsBGRight # uses full width background
+      contactUsBGLeft: "CF_contactUsBGLeft-Enhanced.jpg", //contactUsBGLeft # uses full width background
+      contactUsBGRight: "CF_contactUsBGLeft-Enhanced.jpg", //contactUsBGRight # uses full width background
 
       
       loginBGTop: "EB_loginBGTop.webp", //loginBGTop

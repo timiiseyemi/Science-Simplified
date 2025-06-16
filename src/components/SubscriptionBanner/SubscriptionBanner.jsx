@@ -8,11 +8,12 @@ const SubscriptionBanner = () => {
     useEffect(() => {
         document.documentElement.style.setProperty('--subscription-bg-left', `url(/assets/${tenant.shortName}/${tenant.contactUsBGLeft})`);
         document.documentElement.style.setProperty('--subscription-bg-right', `url(/assets/${tenant.shortName}/${tenant.contactUsBGRight})`);
+        document.documentElement.style.setProperty('--subscription-bg-full', `url(/assets/${tenant.shortName}/${tenant.contactUsBGFull})`);
         document.documentElement.style.setProperty('--color-contactUsColor', tenant.theme.contactUsColor);
     }, []);
 
     return (
-        <div className="subscription-banner">
+        <div className={`subscription-banner ${tenant.shortName === "CF" ? "background-alt" : ""}`}>
             <h2 className="heading-tertiary w-800">Get in Touch</h2>
             <p className="body-large color-light-grey">
                 Reach out to us for any questions, partnerships, or support.

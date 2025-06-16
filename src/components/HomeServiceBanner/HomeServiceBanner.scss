@@ -7,6 +7,13 @@
     background-size: contain;
     background-position: top right;
 
+    &.background-alt {
+        background: var(--cta-background);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
     padding: 7rem;
     border-radius: 2rem;
 

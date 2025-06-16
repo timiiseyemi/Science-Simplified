@@ -9,6 +9,14 @@
     background-position: bottom left, top right;
     background-size: 250px, 200px, 100%;
 
+    &.background-alt {
+        // full width background
+        background: var(--subscription-bg-full);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+
     display: flex;
     flex-direction: column;
     gap: 2rem;

@@ -162,13 +162,13 @@ export const sites = {
         footerBGColor: "#f2e6f8", //footerBGColor
       },
       // Images (Home)
-      homeBG: "EB_croppedbanner.png", //home/homeBG
-      homeExploreAllBG: "EB_ExploreAllBG.png", //home/homeExploreAllBG
+      homeBG: "CF_BG_home.jpg", //home/homeBG
+      homeExploreAllBG: "CF_ExploreAllBG.jpg", //home/homeExploreAllBG
       // Images (General)
-      logoWithText: "EB_logoWithText.png", //logoWithText
+      logoWithText: "CF_text_with_logo.png", //logoWithText
       articleThumbnailPlaceholder: "EB_articleThumbnailPlaceholder.jpg", //articleThumbnailPlaceholder
-      contactUsBGLeft: "CF_contactUsBG.png", //contactUsBGLeft
-      contactUsBGRight: "CF_contactUsBG.png", //contactUsBGRight
+      contactUsBGLeft: "CF_contactUsBG.jpg", //contactUsBGLeft
+      contactUsBGRight: "CF_contactUsBG.jpg", //contactUsBGRight
       loginBGTop: "EB_loginBGTop.webp", //loginBGTop
       loginBGBottom: "EB_loginBGBottom.webp", //loginBGTop
 

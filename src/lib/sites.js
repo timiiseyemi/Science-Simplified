@@ -115,7 +115,7 @@ export const sites = {
       about_teamMember2Image: "kimiya.png",
       about_teamMember2Name: "Kimiya Aframian",
       about_teamMember2Title: "Medical Outreach Lead",
-      about_teamMember2Bio: "Placeholder Bio",
+      about_teamMember2Bio: "Kimiya is a medical student at Stanford University highly interested in Dermatology and currently leads our BE rare dermatologic disease team. She was born and raised in Los Angeles and graduated from UCLA studying Psychobiology and Disability Studies. On her free time, Kimiya enjoys the outdoors, cooking, music, travel, and spending time with family and friends.",
 
       about_teamMember3Image: "jeantang.webp",
       about_teamMember3Name: "Jean Tang, MD Ph.D.",
@@ -175,10 +175,10 @@ export const sites = {
       loginBGBottom: "EB_loginBGBottom.webp", //loginBGTop
 
       //Text
-      text_homeTitleDescription: "Collection of simplified EB articles certified by experts. Powered by Innovation.",
-      text_exploreAllTitle: "We give knowledge to EB patients, families, and caregivers",
-      text_exploreAllDescription: "Collection of simplified EB articles certified by experts.",
-      text_footerDescription: "Provide accessible, up-to-date, and comprehensive information about Epidermolysis Bullosa to patients, families, and caregivers. We aim to empower those affected by EB with the knowledge and resources they need to navigate their journey.",
+      text_homeTitleDescription: "Collection of simplified CF articles certified by experts. Powered by Innovation.",
+      text_exploreAllTitle: "Breathe Easier, Understand More",
+      text_exploreAllDescription: "Collection of simplified CF articles certified by experts.",
+      text_footerDescription: "Provide accessible, up-to-date, and comprehensive information about Cystic Fibrosis to patients, families, and caregivers. We aim to empower those affected by CF with the knowledge and resources they need to navigate their journey.",
 
       // About
       about_teamMember1Image: "kyle.png",
@@ -209,12 +209,12 @@ export const sites = {
       about_supporter2Link: "https://ccrod.cancer.gov/confluence/",
       about_supporter2Hidden: true,
 
-      about_mission1: "EB Simplified is dedicated to making scientific research more accessible and understandable for individuals and families affected by EB.",
-      about_mission2: "We believe everyone deserves access to clear, reliable information about the latest advances in EB research. By sharing simplified and accurate summaries of scientific findings, we aim to empower the EB community to make informed decisions, stay updated on medical progress, and feel connected to the breakthroughs shaping their care.",
-      about_teamDescription: "We are a passionate, volunteer-led team of scientists, clinicians, developers, and advocates working together to bridge the gap between research and the EB community.",
-      about_contributorsDescription: "We're a growing network of scientists who volunteer to edit article summaries and share the amazing research being done in Epidermolysis Bullosa with the community.",
-      about_getInvolvedDescription: "EB Simplified is 100% volunteer-led, and we're always looking for passionate people to join us! Whether you're into web development, research, database management, design, or community outreach—there's a place for you on our team.",
-      about_supportersDescription: "We're proud to work alongside and be supported by organizations dedicated to the Epidermolysis Bullosa community",
+      about_mission1: "CF Simplified is dedicated to making scientific research more accessible and understandable for individuals and families affected by CF.",
+      about_mission2: "We believe everyone deserves access to clear, reliable information about the latest advances in CF research. By sharing simplified and accurate summaries of scientific findings, we aim to empower the CF community to make informed decisions, stay updated on medical progress, and feel connected to the breakthroughs shaping their care.",
+      about_teamDescription: "We are a passionate, volunteer-led team of scientists, clinicians, developers, and advocates working together to bridge the gap between research and the CF community.",
+      about_contributorsDescription: "We're a growing network of scientists who volunteer to edit article summaries and share the amazing research being done in Cystic Fibrosis with the community.",
+      about_getInvolvedDescription: "CF Simplified is 100% volunteer-led, and we're always looking for passionate people to join us! Whether you're into web development, research, database management, design, or community outreach—there's a place for you on our team.",
+      about_supportersDescription: "We're proud to work alongside and be supported by organizations dedicated to the Cystic Fibrosis community",
       
     },
 

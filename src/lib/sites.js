@@ -175,8 +175,84 @@ export const sites = {
       contactUsBGRight: "CF_contactUsBGLeft-Enhanced.jpg", //contactUsBGRight # uses full width background
 
       
-      loginBGTop: "EB_loginBGTop.webp", //loginBGTop
-      loginBGBottom: "EB_loginBGBottom.webp", //loginBGTop
+      loginBGTop: "CF_loginBGTop.webp", //loginBGTop
+      loginBGBottom: "CF_loginBGBottom.webp", //loginBGTop
+
+      //Text
+      text_homeTitleDescription: "Collection of simplified CF articles certified by experts. ",
+      text_exploreAllTitle: "Breathe Easier, Understand More",
+      text_exploreAllDescription: "Collection of simplified CF articles certified by experts.",
+      text_footerDescription: "Provide accessible, up-to-date, and comprehensive information about Cystic Fibrosis to patients, families, and caregivers. We aim to empower those affected by CF with the knowledge and resources they need to navigate their journey.",
+
+      // About
+      about_teamMember1Image: "kyle.png",
+      about_teamMember1Name: "Kyle Wan",
+      about_teamMember1Title: "Founder & Lead",
+      about_teamMember1Bio:  "Committed to building a user-friendly platform to help researchers share clear, accurate summaries with the NF community.",
+      
+      about_teamMember2Image: "expert-placeholder.png",
+      about_teamMember2Name: "Daniel Feldman",
+      about_teamMember2Title: "Medical Outreach Lead",
+      about_teamMember2Bio: "Daniel is a rising 3rd year medical student at West Virginia School of Osteopathic Medicine. His goal is to pursue a career in Pathology. In his down time, he enjoys walking, reading and playing basketball with friends. ",
+
+      about_teamMember3Image: "expert-placeholder.png",
+      about_teamMember3Name: "Faculty Advisor Name",
+      about_teamMember3Title: "Faculty Advisor",
+      about_teamMember3Bio: "Faculty Advisor Bio",
+
+      about_supporter1Logo: "CFF.jpg",
+      about_supporter1Name: "CFF",
+      about_supporter1Width: 200,
+      about_supporter1Height: 200,
+      about_supporter1Link: "https://www.cff.org/",
+
+      about_supporter2Logo: "CFF.jpg",
+      about_supporter2Name: "CFF",
+      about_supporter2Width: 200,
+      about_supporter2Height: 100,
+      about_supporter2Link: "https://ccrod.cancer.gov/confluence/",
+      about_supporter2Hidden: true,
+
+      about_mission1: "CF Simplified is dedicated to making scientific research more accessible and understandable for individuals and families affected by CF.",
+      about_mission2: "We believe everyone deserves access to clear, reliable information about the latest advances in CF research. By sharing simplified and accurate summaries of scientific findings, we aim to empower the CF community to make informed decisions, stay updated on medical progress, and feel connected to the breakthroughs shaping their care.",
+      about_teamDescription: "We are a passionate, volunteer-led team of scientists, clinicians, developers, and advocates working together to bridge the gap between research and the CF community.",
+      about_contributorsDescription: "We're a growing network of scientists who volunteer to edit article summaries and share the amazing research being done in Cystic Fibrosis with the community.",
+      about_getInvolvedDescription: "CF Simplified is 100% volunteer-led, and we're always looking for passionate people to join us! Whether you're into web development, research, database management, design, or community outreach—there's a place for you on our team.",
+      about_supportersDescription: "We're proud to work alongside and be supported by organizations dedicated to the Cystic Fibrosis community",
+
+      about_our_mission: "CF_our_mission.jpg",
+      
+    },
+    Ashermans: {
+      name: "Asherman's Simplified",
+      shortName: "Asherman's",
+      fullName: "Asherman's Simplified",
+      disease: "Asherman's Syndrome",
+      apiUrl: process.env.NEXT_PUBLIC_EB_API_URL,
+      logoPath: "/sites/EB/logo.svg",
+      featureX: false,
+      theme: { // Theme
+        primary: "#94e0d4",
+        primaryDark: "#448178",
+        lightGrey: "#f5f5f5",
+        text: "#1e2a3c",
+        background: "#f5f7fA",
+        contactUsColor: "#c6a5e3", //contactUsColor
+        authorTextColor: "#4c85b1", //authorTextColor
+        footerBGColor: "#f2e6f8", //footerBGColor
+      },
+      // Images (Home)
+      homeBG: "CF_BG_home.jpg", //home/homeBG
+      homeExploreAllBG: "CF_ExploreAllBG.jpg", //home/homeExploreAllBG
+      // Images (General)
+      logoWithText: "CF_text_with_logo.png", //logoWithText
+      articleThumbnailPlaceholder: "CF_article_placeholder.jpg", //articleThumbnailPlaceholder
+      contactUsBGLeft: "CF_contactUsBGLeft-Enhanced.jpg", //contactUsBGLeft # uses full width background
+      contactUsBGRight: "CF_contactUsBGLeft-Enhanced.jpg", //contactUsBGRight # uses full width background
+
+      
+      loginBGTop: "Asherman's_loginBGTop.webp", //loginBGTop
+      loginBGBottom: "Asherman's_loginBGBottom.webp", //loginBGTop
 
       //Text
       text_homeTitleDescription: "Collection of simplified CF articles certified by experts. ",

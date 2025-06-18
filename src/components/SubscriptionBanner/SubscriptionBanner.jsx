@@ -6,8 +6,8 @@ import { tenant } from "@/lib/config";
 
 const SubscriptionBanner = () => {
     useEffect(() => {
-        document.documentElement.style.setProperty('--subscription-bg-left', `url(/assets/${tenant.shortName}/${tenant.contactUsBGLeft})`);
-        document.documentElement.style.setProperty('--subscription-bg-right', `url(/assets/${tenant.shortName}/${tenant.contactUsBGRight})`);
+        document.documentElement.style.setProperty('--subscription-bg-left', `url(/assets/${tenant.pathName}/${tenant.contactUsBGLeft})`);
+        document.documentElement.style.setProperty('--subscription-bg-right', `url(/assets/${tenant.pathName}/${tenant.contactUsBGRight})`);
         document.documentElement.style.setProperty('--color-contactUsColor', tenant.theme.contactUsColor);
     }, []);
 

@@ -30,7 +30,7 @@ export default function Home() {
     };
 
     useEffect(() => {
-        document.documentElement.style.setProperty('--hero-illustration', `url(/assets/${tenant.shortName}/home/${tenant.homeBG})`);
+        document.documentElement.style.setProperty('--hero-illustration', `url(/assets/${tenant.pathName}/home/${tenant.homeBG})`);
     }, []);
 
     return (

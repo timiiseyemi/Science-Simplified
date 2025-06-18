@@ -2,6 +2,7 @@ export const sites = {
     NF: {
       name: "NF Simplified",
       shortName: "NF",
+      pathName: "NF",
       fullName: "Neurofibromatosis Simplified",
       disease: "Neurofibromatosis",
       apiUrl: process.env.NEXT_PUBLIC_NF_API_URL,
@@ -76,6 +77,7 @@ export const sites = {
     EB: {
       name: "EB Simplified",
       shortName: "EB",
+      pathName: "EB",
       fullName: "Epidermolysis Bullosa Simplified",
       disease: "Epidermolysis Bullosa",
       apiUrl: process.env.NEXT_PUBLIC_EB_API_URL,
@@ -150,6 +152,7 @@ export const sites = {
     CF: {
       name: "CF Simplified",
       shortName: "CF",
+      pathName: "CF",
       fullName: "Cystic Fibrosis Simplified",
       disease: "Cystic Fibrosis",
       apiUrl: process.env.NEXT_PUBLIC_EB_API_URL,
@@ -226,6 +229,7 @@ export const sites = {
     Ashermans: {
       name: "Asherman's Simplified",
       shortName: "Asherman's",
+      pathName: "Ashermans",
       fullName: "Asherman's Simplified",
       disease: "Asherman's Syndrome",
       apiUrl: process.env.NEXT_PUBLIC_EB_API_URL,

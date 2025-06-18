@@ -8,14 +8,14 @@ import Marquee from "react-fast-marquee";
 import { tenant } from "@/lib/config";
 
 // images
-// const kyle = `/assets/${tenant.shortName}/about/kyle.png`;
-// const vanessa = `/assets/${tenant.shortName}/about/vanessa.png`;
-// const roxana = `/assets/${tenant.shortName}/about/roxana.png`;
-// const nfNetwork = `/assets/${tenant.shortName}/about/nf-network.png`;
-// const reins = `/assets/${tenant.shortName}/about/reins.png`;
-const expertPlaceholder = `/assets/${tenant.shortName}/about/expert-placeholder.png`;
-const joinUsIllustration = `/assets/${tenant.shortName}/about/our-mission.jpg`;
-const getInvolvedIllustration = `/assets/${tenant.shortName}/about/get-involved.jpg`;
+// const kyle = `/assets/${tenant.pathName}/about/kyle.png`;
+// const vanessa = `/assets/${tenant.pathName}/about/vanessa.png`;
+// const roxana = `/assets/${tenant.pathName}/about/roxana.png`;
+// const nfNetwork = `/assets/${tenant.pathName}/about/nf-network.png`;
+// const reins = `/assets/${tenant.pathName}/about/reins.png`;
+const expertPlaceholder = `/assets/${tenant.pathName}/about/expert-placeholder.png`;
+const joinUsIllustration = `/assets/${tenant.pathName}/about/our-mission.jpg`;
+const getInvolvedIllustration = `/assets/${tenant.pathName}/about/get-involved.jpg`;
 
 // Fetch editors from the API
 async function fetchEditors() {
@@ -88,7 +88,7 @@ export default async function AboutPage() {
                                 className={`${aboutPageClass}__mission-illustration`}
                             >
                                 <Image
-                                    src={`/assets/${tenant.shortName}/about/${tenant.about_our_mission}`}
+                                    src={`/assets/${tenant.pathName}/about/${tenant.about_our_mission}`}
                                     alt="Mission illustration"
                                     width={400}
                                     height={400}
@@ -117,7 +117,7 @@ export default async function AboutPage() {
                                     className={`${aboutPageClass}__team-member-photo`}
                                 >
                                     <Image
-                                        src={`/assets/${tenant.shortName}/about/${tenant.about_teamMember1Image}`}
+                                        src={`/assets/${tenant.pathName}/about/${tenant.about_teamMember1Image}`}
                                         alt={tenant.about_teamMember1Name}
                                         width={200}
                                         height={200}
@@ -151,7 +151,7 @@ export default async function AboutPage() {
                                     className={`${aboutPageClass}__team-member-photo`}
                                 >
                                     <Image
-                                        src={`/assets/${tenant.shortName}/about/${tenant.about_teamMember2Image}`}
+                                        src={`/assets/${tenant.pathName}/about/${tenant.about_teamMember2Image}`}
                                         alt={tenant.about_teamMember2Name}
                                         width={200}
                                         height={200}
@@ -185,7 +185,7 @@ export default async function AboutPage() {
                                     className={`${aboutPageClass}__team-member-photo`}
                                 >
                                     <Image
-                                        src={`/assets/${tenant.shortName}/about/${tenant.about_teamMember3Image}`}
+                                        src={`/assets/${tenant.pathName}/about/${tenant.about_teamMember3Image}`}
                                         alt={tenant.about_teamMember3Name}
                                         width={200}
                                         height={200}
@@ -371,7 +371,7 @@ export default async function AboutPage() {
                                 className={`${aboutPageClass}__supporter-logo ${tenant.shortName.toLowerCase()}-network`}
                             >
                                 <Image
-                                    src={`/assets/${tenant.shortName}/about/${tenant.about_supporter1Logo}`}
+                                    src={`/assets/${tenant.pathName}/about/${tenant.about_supporter1Logo}`}
                                     alt={tenant.about_supporter1Name}
                                     width={tenant.about_supporter1Width}
                                     height={tenant.about_supporter1Height}
@@ -398,7 +398,7 @@ export default async function AboutPage() {
                                     className={`${aboutPageClass}__supporter-logo`}
                                 >
                                     <Image 
-                                    src={`/assets/${tenant.shortName}/about/${tenant.about_supporter2Logo}`}
+                                    src={`/assets/${tenant.pathName}/about/${tenant.about_supporter2Logo}`}
                                     alt={tenant.about_supporter2Name}
                                     width={tenant.about_supporter2Width}
                                     height={tenant.about_supporter2Height}

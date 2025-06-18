@@ -36,8 +36,8 @@ export default function LoginForm() {
     };
 
     useEffect(() => {
-        document.documentElement.style.setProperty('--auth-bg-top', `url(/assets/${tenant.shortName}/${tenant.loginBGTop})`);
-        document.documentElement.style.setProperty('--auth-bg-bottom', `url(/assets/${tenant.shortName}/${tenant.loginBGBottom})`);
+        document.documentElement.style.setProperty('--auth-bg-top', `url(/assets/${tenant.pathName}/${tenant.loginBGTop})`);
+        document.documentElement.style.setProperty('--auth-bg-bottom', `url(/assets/${tenant.pathName}/${tenant.loginBGBottom})`);
     }, []);
 
     return (

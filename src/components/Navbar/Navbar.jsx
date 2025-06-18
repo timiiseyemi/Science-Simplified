@@ -14,7 +14,7 @@ function Navbar() {
     const { logout } = useAuth();
     const toggleNavbar = () => setNavbar(!navbar);
 
-    const navbrand = `/assets/${tenant.shortName}/${tenant.logoWithText}`;
+    const navbrand = `/assets/${tenant.pathName}/${tenant.logoWithText}`;
 
     // Define the navigation links based on authentication and admin status
     const navLinks = [

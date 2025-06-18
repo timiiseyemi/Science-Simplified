@@ -243,7 +243,7 @@ export const sites = {
         background: "#ffffff",
         contactUsColor: "#f0c441", //contactUsColor
         authorTextColor: "#4c85b1", //authorTextColor
-        footerBGColor: "#f5ebc1", //footerBGColor
+        footerBGColor: "#fff091", //footerBGColor
       },
       // Images (Home)
       homeBG: "Ashermans_BG_home.jpg", //home/homeBG

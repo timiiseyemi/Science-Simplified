@@ -313,27 +313,27 @@ export const sites = {
 
 
       theme: { // Theme
-        primary: "#94e0d4",
-        primaryDark: "#448178",
+        primary: "#d49bf2",
+        primaryDark: "#6d32a8",
         lightGrey: "#f5f5f5",
-        text: "#1e2a3c",
+        text: "#3d2447",
         background: "#f5f7fA",
         contactUsColor: "#c6a5e3", //contactUsColor
-        authorTextColor: "#4c85b1", //authorTextColor
-        footerBGColor: "#f2e6f8", //footerBGColor
+        authorTextColor: "#6d32a8", //authorTextColor
+        footerBGColor: "#6d32a8", //footerBGColor
       },
       // Images (Home)
-      homeBG: "CF_BG_home.jpg", //home/homeBG
+      homeBG: "Aicardi_BG_home.png", //home/homeBG
       homeExploreAllBG: "CF_ExploreAllBG.jpg", //home/homeExploreAllBG
       // Images (General)
       logoWithText: "CF_text_with_logo.png", //logoWithText
-      articleThumbnailPlaceholder: "CF_article_placeholder.jpg", //articleThumbnailPlaceholder
-      contactUsBGLeft: "CF_contactUsBGLeft-Enhanced.jpg", //contactUsBGLeft # uses full width background
-      contactUsBGRight: "CF_contactUsBGLeft-Enhanced.jpg", //contactUsBGRight # uses full width background
+      articleThumbnailPlaceholder: "Aicardi_article_placeholder.jpg", //articleThumbnailPlaceholder
+      contactUsBGLeft: "Aicardi_contactUsBGLeft-Enhanced.jpg", //contactUsBGLeft # uses full width background
+      contactUsBGRight: "Aicardi_contactUsBGLeft-Enhanced.jpg", //contactUsBGRight # uses full width background
 
       
-      loginBGTop: "CF_loginBGTop.webp", //loginBGTop
-      loginBGBottom: "CF_loginBGBottom.webp", //loginBGTop
+      loginBGTop: "Aicardi_loginBGTop.webp", //loginBGTop
+      loginBGBottom: "Aicardi_loginBGBottom.webp", //loginBGTop
 
       //Text
       text_homeTitleDescription: "Collection of simplified Aicardi Syndrome articles certified by experts. ",
@@ -357,13 +357,13 @@ export const sites = {
       about_teamMember3Title: "Faculty Advisor",
       about_teamMember3Bio: "Faculty Advisor Bio",
 
-      about_supporter1Logo: "aicardifoundation.png",
+      about_supporter1Logo: "aicardifoundation.jpg",
       about_supporter1Name: "Aicardi Syndrome Foundation",
       about_supporter1Width: 300,
       about_supporter1Height: 300,
       about_supporter1Link: "https://aicardisyndromefoundation.org/",
 
-      about_supporter2Logo: "aicardifoundation.png",
+      about_supporter2Logo: "aicardifoundation.jpg",
       about_supporter2Name: "Aicardi Syndrome Foundation",
       about_supporter2Width: 200,
       about_supporter2Height: 100,

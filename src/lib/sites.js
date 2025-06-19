@@ -324,9 +324,9 @@ export const sites = {
       },
       // Images (Home)
       homeBG: "Aicardi_BG_home.png", //home/homeBG
-      homeExploreAllBG: "CF_ExploreAllBG.jpg", //home/homeExploreAllBG
+      homeExploreAllBG: "Aicardi_ExploreAllBG.png", //home/homeExploreAllBG
       // Images (General)
-      logoWithText: "CF_text_with_logo.png", //logoWithText
+      logoWithText: "Aicardi_logo_with_text_temp.jpg", //logoWithText
       articleThumbnailPlaceholder: "Aicardi_article_placeholder.jpg", //articleThumbnailPlaceholder
       contactUsBGLeft: "Aicardi_contactUsBGLeft-Enhanced.jpg", //contactUsBGLeft # uses full width background
       contactUsBGRight: "Aicardi_contactUsBGLeft-Enhanced.jpg", //contactUsBGRight # uses full width background

@@ -51,16 +51,16 @@ export const sites = {
 
 
       about_supporter1Logo: "nf-network.png",
-      about_supporter1Name: "NF-Network",
+      about_supporter1Name: "NF Network",
       about_supporter1Width: 500,
       about_supporter1Height: 100,
-      about_supporter1Link: "https://nfnetwork.com",
+      about_supporter1Link: "https://nfnetwork.org",
 
       about_supporter2Logo: "reins.png",
       about_supporter2Name: "REiNS",
       about_supporter2Width: 200,
       about_supporter2Height: 100,
-      about_supporter2Link: "https://ccrod.cancer.gov/confluence/",
+      about_supporter2Link: "https://ccrod.cancer.gov/confluence/plugins/servlet/mobile?contentId=141000895#content/view/141000895",
       about_supporter2Hidden: false,
 
       about_mission1: "NF Simplified is dedicated to making scientific research more accessible and understandable for individuals and families affected by NF1, NF2 and schwannomatosis.",

@@ -59,6 +59,10 @@ const AddArticleForm = () => {
     const [imageUrl, setImageUrl] = useState(null);
     const [pdfLoader, setPdfLoader] = useState(false);
 
+    const [authors, setAuthors] = useState([]);
+    const [newAuthor, setNewAuthor] = useState("");
+
+
     const quillRef = useRef(null);
 
     const { user, role } = useAuthStore();

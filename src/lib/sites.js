@@ -323,7 +323,7 @@ export const sites = {
         footerBGColor: "#6d32a8", //footerBGColor
       },
       // Images (Home)
-      homeBG: "Aicardi_BG_home.png", //home/homeBG
+      homeBG: "Aicardi_homeBG.png", //home/homeBG
       homeExploreAllBG: "Aicardi_ExploreAllBG.png", //home/homeExploreAllBG
       // Images (General)
       logoWithText: "Aicardi_logo_w_text.png", //logoWithText

@@ -166,6 +166,8 @@ const AddArticleForm = () => {
                     image_url: imageUrl,
                     role: role,
                     userId: user.userId,
+                    authors: authors,
+                    publicationDate: publicationDate,
                 }),
             });
 

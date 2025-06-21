@@ -167,7 +167,7 @@ const AddArticleForm = () => {
                     role: role,
                     userId: user.userId,
                     authors: authors,
-                    publicationDate: publicationDate,
+                    publication_date: publicationDate,
                 }),
             });
 

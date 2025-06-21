@@ -54,8 +54,10 @@ export async function simplifyArticle(content, lengthString) {
         Respond using HTML formatting, with visually appealing headers and whitespace. 
         Use only the CSS classes in the example css file, given below, prefixed with "apicss-".
         Return it in a div with the class "apicss-body".
+        Use (darker) apicss colors for important words and phrases.
         Do not start your response with "<!DOCTYPE html>" or markdown fences.
         No copyright sign or extra boilerplate.
+        An example output is provided. Make your output simpler in language than the example.
             `.trim();
         
             const messages = [

@@ -52,7 +52,8 @@ export async function simplifyArticle(content, lengthString) {
         Each paragraph should be medium length. Include limitations of the study if applicable.
         
         Respond using HTML formatting, with visually appealing headers and whitespace. 
-        Use only the CSS classes in the example css file, given below, prefixed with "apicss-". 
+        Use only the CSS classes in the example css file, given below, prefixed with "apicss-".
+        Return it in a div with the class "apicss-body".
         Do not start your response with "<!DOCTYPE html>" or markdown fences.
         No copyright sign or extra boilerplate.
             `.trim();

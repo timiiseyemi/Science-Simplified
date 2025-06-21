@@ -350,3 +350,13 @@
 /* ---------- Utility ---------- */
 .apicss-hidden          { display: none !important; }
 .apicss-inline-block    { display: inline-block; }
+
+/* in your apicss.css (or wherever you keep the utilities) */
+.apicss-body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 2rem auto;
+    max-width: 800px;
+    padding: 0 1rem;
+  }
+  

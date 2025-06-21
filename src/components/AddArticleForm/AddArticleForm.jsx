@@ -403,6 +403,7 @@ const AddArticleForm = () => {
                         value={name}
                         onChange={e => updateAuthor(i, e.target.value)}
                         className="add-article-form__input"
+                        placeholder="Add in authors and press 'Add Authors' or copy paste in authors separated by commas (ie. Emily Bronte, Anthony Fauci)"
                         />
                         <Button
                         type="button"

@@ -179,7 +179,7 @@
       &__add-author {
         gap: 0.5rem;
         margin-top: 0.5rem;
-        max-width: 30%;  
+        max-width: 50%;  
 
       }
       &__add-author .add-article-form__input {
@@ -190,8 +190,8 @@
       
     &__add-button,
     &__clear-button {
-        height: 2.5rem;          // same line-height as inputs
-        line-height: 2.5rem;
+        height: 5rem;          // same line-height as inputs
+        line-height: 5rem;
         padding: 0 1rem;
         font-size: 1rem;
     }

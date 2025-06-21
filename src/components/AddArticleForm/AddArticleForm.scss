@@ -159,14 +159,14 @@
         margin-bottom: 1rem;
       }
       
-      &__authors-list {
+    &__authors-list {
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
         margin-top: 0.5rem;
       }
       
-      &__authors-list-item {
+    &__authors-list-item {
         flex: 1 1 30%;    // stretch up to ~30% width, wrap when needed
         display: flex;
         align-items: center;
@@ -174,16 +174,29 @@
         min-width: 180px;
       }
       
-      &__add-author {
+    &__add-author {
+        flex: 1 1 30%;    // stretch up to ~30% width, wrap when needed
         display: flex;
         gap: 0.5rem;
         margin-top: 0.5rem;
       }
       
-      &__add-button,
-      &__clear-button {
-        padding: 0.5rem 1rem;
+    &__add-button,
+    &__clear-button {
+        height: 2.5rem;          // same line-height as inputs
+        line-height: 2.5rem;
+        padding: 0 1rem;
+        font-size: 1rem;
+    }
+    &__clear-button {
+        background-color: #e53e3e;
+        color: white;
+        &:hover {
+          background-color: #c53030;
+        }
       }
+      
+
       
 }
 

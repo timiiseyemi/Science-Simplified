@@ -382,11 +382,12 @@ const AddArticleForm = () => {
                     Publication Date
                 </Label>
                 <Input
-                    id="pubDate"
-                    type="date"
-                    value={publicationDate}
-                    onChange={e => setPublicationDate(e.target.value)}
-                    className="add-article-form__input"
+                id="pubDate"
+                type="text"
+                placeholder="e.g. 2020 January 6"
+                value={publicationDate}
+                onChange={e => setPublicationDate(e.target.value)}
+                className="add-article-form__input"
                 />
             </div>
 

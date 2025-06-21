@@ -71,7 +71,7 @@ export async function simplifyArticle(content, lengthString) {
             {
                 model: "gpt-4.1",      
                 messages,
-                max_tokens: 8192,     // bump to the snapshot’s token limit
+                max_tokens: 100000,     // bump to the snapshot’s token limit
                 temperature: 0.7,
                 stream: true,         // get a token stream
             },

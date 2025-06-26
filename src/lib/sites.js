@@ -503,7 +503,7 @@ export const sites = {
       about_teamMember1Title: "Founder & Lead",
       about_teamMember1Bio:  "Committed to building a user-friendly platform to help researchers share clear, accurate summaries with the Aicardi Syndrome community.",
       
-      about_teamMember2Image: "expert-placeholder.png",
+      about_teamMember2Image: "Ariba.png",
       about_teamMember2Name: "Ariba Fatima",
       about_teamMember2Title: "Medical Outreach Lead",
       about_teamMember2Bio: "Ariba is a striving researcher in interdisciplinary studies between neuroscience and art therapy. Currently, she is a professional idol under Ether Crush Entertainment and advocates on giving accessibility to neuroscience and mental health to a wide audience.",
@@ -521,8 +521,8 @@ export const sites = {
 
       about_supporter2Logo: "ALS_Association.png",
       about_supporter2Name: "ALS Association",
-      about_supporter2Width: 200,
-      about_supporter2Height: 100,
+      about_supporter2Width: 300,
+      about_supporter2Height: 200,
       about_supporter2Link: "https://www.alsa.org/",
       about_supporter2Hidden: true,
 

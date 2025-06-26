@@ -161,7 +161,7 @@ const ArticlePage = ({ params }) => {
                                     </h1>
                                     <div className="flex items-center justify-start w-full gap-2 mb-8">
                                         <h3 className="text-xl font-semibold text-gray-500 w-700">
-                                            Published On:
+                                            Original Paper Published:
                                         </h3>
                                         <p className="text-2xl font-bold text-gray-600">
                                             {article.publication_date || 'N/A'}

@@ -391,27 +391,27 @@ export const sites = {
 
 
       theme: { // Theme
-        primary: "#d49bf2",
-        primaryDark: "#6d32a8",
+        primary: "#ba4e14",
+        primaryDark: "#913f13",
         lightGrey: "#f5f5f5",
         text: "#3d2447",
-        background: "#ffffff",
+        background: "#f0d7c9",
         contactUsColor: "#c6a5e3", //contactUsColor
         authorTextColor: "#6d32a8", //authorTextColor
         footerBGColor: "#b284e0", //footerBGColor
       },
       // Images (Home)
-      homeBG: "Aicardi_BG_home.png", //home/homeBG
-      homeExploreAllBG: "Aicardi_ExploreAllBG.png", //home/homeExploreAllBG
+      homeBG: "RYR1_homeBG_temp.jpg", //home/homeBG
+      homeExploreAllBG: "RYR1_ExploreAllBG.png", //home/homeExploreAllBG
       // Images (General)
-      logoWithText: "Aicardi_logo_w_text.png", //logoWithText
-      articleThumbnailPlaceholder: "Aicardi_article_placeholder.jpg", //articleThumbnailPlaceholder
-      contactUsBGLeft: "Aicardi_contactUsBGLeft-Enhanced.jpg", //contactUsBGLeft # uses full width background
-      contactUsBGRight: "Aicardi_contactUsBGLeft-Enhanced.jpg", //contactUsBGRight # uses full width background
+      logoWithText: "RYR1_logo_w_text_temp.jpg", //logoWithText
+      articleThumbnailPlaceholder: "RYR1_article_placeholder_temp.jpg", //articleThumbnailPlaceholder
+      contactUsBGLeft: "RYR1_contactUsBGLeft-Enhanced.jpg", //contactUsBGLeft # uses full width background
+      contactUsBGRight: "RYR1_contactUsBGLeft-Enhanced.jpg", //contactUsBGRight # uses full width background
 
       
-      loginBGTop: "Aicardi_loginBGTop.webp", //loginBGTop
-      loginBGBottom: "Aicardi_loginBGBottom.webp", //loginBGTop
+      loginBGTop: "RYR1_loginBGTop.webp", //loginBGTop
+      loginBGBottom: "RYR1_loginBGBottom.webp", //loginBGTop
 
       //Text
       text_homeTitleDescription: "Collection of simplified RYR1-related disease articles certified by experts. ",
@@ -435,17 +435,17 @@ export const sites = {
       about_teamMember3Title: "Faculty Advisor",
       about_teamMember3Bio: "Faculty Advisor Bio",
 
-      about_supporter1Logo: "aicardifoundation.jpg",
-      about_supporter1Name: "Aicardi Syndrome Foundation",
+      about_supporter1Logo: "ryr1foundation.png",
+      about_supporter1Name: "RYR1 Foundation",
       about_supporter1Width: 300,
-      about_supporter1Height: 300,
-      about_supporter1Link: "https://aicardisyndromefoundation.org/",
+      about_supporter1Height: 200,
+      about_supporter1Link: "https://www.ryr1.org/",
 
-      about_supporter2Logo: "aicardifoundation.jpg",
-      about_supporter2Name: "Aicardi Syndrome Foundation",
+      about_supporter2Logo: "ryr1foundation.png",
+      about_supporter2Name: "RYR1 Foundation",
       about_supporter2Width: 200,
       about_supporter2Height: 100,
-      about_supporter2Link: "https://ccrod.cancer.gov/confluence/",
+      about_supporter2Link: "https://www.ryr1.org/",
       about_supporter2Hidden: true,
 
       about_mission1: "RYR1 Simplified is dedicated to making scientific research more accessible and understandable for individuals and families affected by RYR1-related diseases.",
@@ -472,7 +472,7 @@ export const sites = {
         primary: "#a0bcfa",
         primaryDark: "#2f99eb",
         lightGrey: "#f5f5f5",
-        text: "#E32636",
+        text: "#9c1a25",
         background: "#ffffff",
         contactUsColor: "#c6a5e3", //contactUsColor
         authorTextColor: "#6d32a8", //authorTextColor

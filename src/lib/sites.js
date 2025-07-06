@@ -637,7 +637,7 @@ export const sites = {
       homeBG: "HD_homeBG.png", //home/homeBG
       homeExploreAllBG: "HD_ExploreAllBG.jpg", //home/homeExploreAllBG
       // Images (General)
-      logoWithText: "HD_logo_with_text.png", //logoWithText
+      logoWithText: "HD_logo.png", //logoWithText
       articleThumbnailPlaceholder: "HD.png", //articleThumbnailPlaceholder
       contactUsBGLeft: "HD_contactUsBGLeft.jpg", //contactUsBGLeft # uses full width background
       contactUsBGRight: "HD_contactUsBGLeft.jpg", //contactUsBGRight # uses full width background

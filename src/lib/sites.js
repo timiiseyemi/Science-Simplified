@@ -837,12 +837,12 @@ export const sites = {
       about_supporter2Link: "https://www.canavan.org/",
       about_supporter2Hidden: true,
 
-      about_mission1: "RYR1 Simplified is dedicated to making scientific research more accessible and understandable for individuals and families affected by RYR1-related diseases.",
-      about_mission2: "We believe everyone deserves access to clear, reliable information about the latest advances in RYR1-related diseases research. By sharing simplified and accurate summaries of scientific findings, we aim to empower the RYR1-related diseases community to make informed decisions, stay updated on medical progress, and feel connected to the breakthroughs shaping their care.",
-      about_teamDescription: "We are a passionate, volunteer-led team of scientists, clinicians, developers, and advocates working together to bridge the gap between research and the RYR1-related diseases community.",
-      about_contributorsDescription: "We're a growing network of scientists who volunteer to edit article summaries and share the amazing research being done in RYR1-related diseases with the community.",
-      about_getInvolvedDescription: "RYR1 Simplified is 100% volunteer-led, and we're always looking for passionate people to join us! Whether you're into web development, research, database management, design, or community outreach—there's a place for you on our team.",
-      about_supportersDescription: "We're proud to work alongside and be supported by organizations dedicated to the RYR1-related diseases community",
+      about_mission1: "Canavan Simplified is dedicated to making scientific research more accessible and understandable for individuals and families affected by Canavan Disease.",
+      about_mission2: "We believe everyone deserves access to clear, reliable information about the latest advances in Canavan Disease research. By sharing simplified and accurate summaries of scientific findings, we aim to empower the Canavan Disease community to make informed decisions, stay updated on medical progress, and feel connected to the breakthroughs shaping their care.",
+      about_teamDescription: "We are a passionate, volunteer-led team of scientists, clinicians, developers, and advocates working together to bridge the gap between research and the Canavan Disease community.",
+      about_contributorsDescription: "We're a growing network of scientists who volunteer to edit article summaries and share the amazing research being done in Canavan Disease with the community.",
+      about_getInvolvedDescription: "Canavan Simplified is 100% volunteer-led, and we're always looking for passionate people to join us! Whether you're into web development, research, database management, design, or community outreach—there's a place for you on our team.",
+      about_supportersDescription: "We're proud to work alongside and be supported by organizations dedicated to the Canavan Disease community",
 
       about_our_mission: "our-mission.jpg",
       

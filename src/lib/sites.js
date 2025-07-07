@@ -791,7 +791,7 @@ export const sites = {
       },
       // Images (Home)
       homeBG: "Canavan_homeBG.png", //home/homeBG
-      homeExploreAllBG: "Canavan_ExploreAllBG.png", //home/homeExploreAllBG
+      homeExploreAllBG: "Canavan_ExploreAllBG.jpg", //home/homeExploreAllBG
       // Images (General)
       logoWithText: "Canavan_text_with_logo.png", //logoWithText
       articleThumbnailPlaceholder: "Canavan_text_with_logo.png", //articleThumbnailPlaceholder

@@ -872,7 +872,7 @@ export const sites = {
       homeExploreAllBG: "Vitiligo_ExploreAllBG.png", //home/homeExploreAllBG
       // Images (General)
       logoWithText: "VitiligoLogo.png", //logoWithText
-      articleThumbnailPlaceholder: "Canavan_text_with_logo.png", //articleThumbnailPlaceholder
+      articleThumbnailPlaceholder: "ArticlePlaceholderDeerVitiligo.png", //articleThumbnailPlaceholder
       contactUsBGLeft: "Vitiligo_contactUsBGLeft.jpg", //contactUsBGLeft # uses full width background
       contactUsBGRight: "Vitiligo_contactUsBGLeft.jpg", //contactUsBGRight # uses full width background
 

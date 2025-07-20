@@ -6,6 +6,7 @@ const ADMIN_API = [
   "/api/editors",
   "/api/articles/assign",
   "/api/admin",
+  "/api/articles/featured",
 ];
 
 export async function middleware(req) {

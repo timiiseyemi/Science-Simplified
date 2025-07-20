@@ -5,7 +5,6 @@ import { verify } from "jsonwebtoken";
 const ADMIN_API = [
   "/api/editors",
   "/api/articles/assign",
-  "/api/articles/unassign",
   "/api/admin",
 ];
 
@@ -46,6 +45,8 @@ export async function middleware(req) {
   if (pathname.startsWith("/api")) {
     // find any admin path that matches the start of pathname
     const isAdminApi = ADMIN_API.some((p) => pathname.startsWith(p));
+    console.log(isAdminApi);
+    console.log(pathname);
     if (isAdminApi && !decoded.isAdmin) {
       return NextResponse.json({ message: "Forbidden" }, { status: 403 });
     }

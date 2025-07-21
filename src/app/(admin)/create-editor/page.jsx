@@ -1,11 +1,16 @@
 "use client";
-import "./create-editor-page.scss";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { Input } from "@/components/ui/input";
 
+import React, { useState, useEffect } from "react";
+import "./create-editor-page.scss";
+import Navbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer/Footer";
+import { Eye, EyeOff, Loader2 } from "lucide-react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { tenant } from "@/lib/config";
 
 export default function CreateEditorPage() {
   const [form, setForm] = useState({
@@ -15,12 +20,28 @@ export default function CreateEditorPage() {
     password: "",
     role: "editor",
   });
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      '--auth-bg-top',
+      `url(/assets/${tenant.pathName}/${tenant.loginBGTop})`
+    );
+    document.documentElement.style.setProperty(
+      '--auth-bg-bottom',
+      `url(/assets/${tenant.pathName}/${tenant.loginBGBottom})`
+    );
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((f) => ({ ...f, [name]: value }));
+  };
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
   };
 
   const handleSubmit = async (e) => {
@@ -49,26 +70,36 @@ export default function CreateEditorPage() {
 
   return (
     <main className="create-editor-page">
+      <Navbar />
+      <ToastContainer />
       <div className="create-editor-page__body">
         <div className="create-editor">
           <h1 className="create-editor__title">Create Editor Account</h1>
           <form className="create-editor__form" onSubmit={handleSubmit}>
             <div className="create-editor__input-group create-editor__input-group--half">
-              <div>
-                <label className="create-editor__label">First Name</label>
+              <div className="create-editor__input-wrapper">
+                <label htmlFor="firstName" className="create-editor__label">
+                  First Name
+                </label>
                 <Input
-                  className="create-editor__input"
+                  id="firstName"
                   name="firstName"
+                  className="create-editor__input"
+                  placeholder="First Name"
                   value={form.firstName}
                   onChange={handleChange}
                   required
                 />
               </div>
-              <div>
-                <label className="create-editor__label">Last Name</label>
+              <div className="create-editor__input-wrapper">
+                <label htmlFor="lastName" className="create-editor__label">
+                  Last Name
+                </label>
                 <Input
-                  className="create-editor__input"
+                  id="lastName"
                   name="lastName"
+                  className="create-editor__input"
+                  placeholder="Last Name"
                   value={form.lastName}
                   onChange={handleChange}
                   required
@@ -77,11 +108,15 @@ export default function CreateEditorPage() {
             </div>
 
             <div className="create-editor__input-group">
-              <label className="create-editor__label">Email</label>
+              <label htmlFor="email" className="create-editor__label">
+                Email
+              </label>
               <Input
-                className="create-editor__input"
+                id="email"
                 type="email"
                 name="email"
+                className="create-editor__input"
+                placeholder="Enter Email"
                 value={form.email}
                 onChange={handleChange}
                 required
@@ -89,28 +124,48 @@ export default function CreateEditorPage() {
             </div>
 
             <div className="create-editor__input-group">
-              <label className="create-editor__label">Password</label>
-              <Input
-                className="create-editor__input"
-                type="password"
-                name="password"
-                value={form.password}
-                onChange={handleChange}
-                required
-              />
+              <label htmlFor="password" className="create-editor__label">
+                Password
+              </label>
+              <div className="create-editor__password-input">
+                <Input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  className="create-editor__input"
+                  placeholder="Password"
+                  value={form.password}
+                  onChange={handleChange}
+                  required
+                />
+                <button
+                  type="button"
+                  className="create-editor__password-toggle"
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? <EyeOff /> : <Eye />}
+                </button>
+              </div>
             </div>
 
-
-            <button
+            <Button
               type="submit"
               className="create-editor__submit"
               disabled={loading}
             >
-              {loading ? "Creating…" : "Create Editor"}
-            </button>
+              {loading ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Creating…
+                </>
+              ) : (
+                "Create Editor"
+              )}
+            </Button>
           </form>
         </div>
       </div>
+      <Footer />
     </main>
   );
 }

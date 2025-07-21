@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/adminGuard";
 
 export async function GET() {
-    const adminCheck = requireAdmin(request);
+    const adminCheck = requireAdmin();
     if (adminCheck instanceof NextResponse) return adminCheck;
     try {
         // Fetch article IDs from the featured table

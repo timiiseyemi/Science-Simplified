@@ -70,8 +70,10 @@
     }
 
     &__input, &__select {
+
       width: 100%;
       padding: 1.2rem;
+      height: 5rem;
       border: 1px solid #e0e0e0;
       border-radius: 0.8rem;
       font-size: 1.6rem;
@@ -138,7 +140,7 @@
         &--half {
           flex-direction: column;
         }
-        height: 100%;
+
       }
       &__input-wrapper {
         /* already flex:1 */

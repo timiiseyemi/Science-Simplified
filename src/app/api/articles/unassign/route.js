@@ -1,8 +1,12 @@
 // app/api/articles/unassign/route.js
 import { query } from "@/lib/db";
 import { NextResponse } from "next/server";
+import { requireAdmin } from "@/lib/adminGuard";
 
 export async function POST(request) {
+    const adminCheck = requireAdmin();
+    if (adminCheck instanceof NextResponse) return adminCheck;
+    
     try {
         const { articleId, editorId } = await request.json();
 

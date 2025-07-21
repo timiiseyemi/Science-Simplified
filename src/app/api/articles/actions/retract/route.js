@@ -1,8 +1,13 @@
 import { query } from "@/lib/db";
 import { NextResponse } from "next/server";
+import { requireAdmin } from "@/lib/adminGuard";
+
 
 // Only allow POST method
 export async function POST(req) {
+    const adminCheck = requireAdmin();
+    if (adminCheck instanceof NextResponse) return adminCheck;
+    
     const { id } = await req.json(); // Parse JSON body from the request
 
     try {

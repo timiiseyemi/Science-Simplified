@@ -2,8 +2,12 @@ export const revalidate = 0; // Disable caching for this API route
 
 import { query } from "@/lib/db";
 import { NextResponse } from "next/server";
+import { requireAdmin } from "@/lib/adminGuard";
 
 export async function POST(request) {
+    const adminCheck = requireAdmin();
+    if (adminCheck instanceof NextResponse) return adminCheck;
+    
     try {
         const { editorIds, articleIds } = await request.json();
 

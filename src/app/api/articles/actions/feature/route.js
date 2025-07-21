@@ -1,7 +1,12 @@
 import { query } from "@/lib/db";
 import { NextResponse } from "next/server";
+import { requireAdmin } from "@/lib/adminGuard";
+
 
 export async function POST(req) {
+    const adminCheck = requireAdmin();
+    if (adminCheck instanceof NextResponse) return adminCheck;
+    
     const { articleId, shouldBeFeatured } = await req.json();
 
     try {

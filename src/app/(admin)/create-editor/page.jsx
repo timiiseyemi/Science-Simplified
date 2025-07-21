@@ -100,18 +100,6 @@ export default function CreateEditorPage() {
               />
             </div>
 
-            <div className="create-editor__input-group">
-              <label className="create-editor__label">Role</label>
-              <select
-                className="create-editor__select"
-                name="role"
-                value={form.role}
-                onChange={handleChange}
-              >
-                <option value="editor">Editor</option>
-                <option value="author">Author</option>
-              </select>
-            </div>
 
             <button
               type="submit"

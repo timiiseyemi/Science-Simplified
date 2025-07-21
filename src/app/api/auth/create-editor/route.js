@@ -10,8 +10,8 @@ export async function POST(request) {
   if (guard instanceof NextResponse) return guard;
 
   // 2) pull the new user data + role
-  const { firstName, lastName, email, password, role } = await request.json();
-  if (!firstName || !lastName || !email || !password || !role) {
+  const { firstName, lastName, email, password } = await request.json();
+  if (!firstName || !lastName || !email || !password ) {
     return NextResponse.json({ message: "Missing fields" }, { status: 400 });
   }
 
@@ -22,7 +22,7 @@ export async function POST(request) {
        (first_name, last_name, email, password_hash, role)
      VALUES ($1,$2,$3,$4,$5)
      RETURNING id, email`,
-    [firstName, lastName, email.toLowerCase(), passwordHash, role]
+    [firstName, lastName, email.toLowerCase(), passwordHash, "editor"]
   );
   const userId = insertUser.rows[0].id;
 

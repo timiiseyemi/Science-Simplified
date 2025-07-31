@@ -425,7 +425,7 @@ export const sites = {
       about_teamMember1Title: "Founder & Lead",
       about_teamMember1Bio:  "Committed to building a user-friendly platform to help researchers share clear, accurate summaries with the Aicardi Syndrome community.",
       
-      about_teamMember2Image: "expert-placeholder.png",
+      about_teamMember2Image: "shubhi.jpg",
       about_teamMember2Name: "Shubhi Nanda",
       about_teamMember2Title: "Medical Outreach Lead",
       about_teamMember2Bio: "Placeholder Bio",

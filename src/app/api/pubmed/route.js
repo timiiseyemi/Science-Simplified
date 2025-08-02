@@ -88,25 +88,21 @@ export async function POST(req) {
             title = meta?.["title-group"]?.["article-title"] || "";
 
             // Authors
-            // Authors (normalize to array)
-            let authors = [];
-            if (db === "pubmed") {
-                if (article.AuthorList?.Author) {
-                    const authorData = Array.isArray(article.AuthorList.Author)
-                        ? article.AuthorList.Author
-                        : [article.AuthorList.Author];
-                    authors = authorData.map(a => `${a.ForeName || ""} ${a.LastName || ""}`.trim());
-                }
-            } else if (db === "pmc") {
-                const contribs = parsed?.["pmc-articleset"]?.article?.front?.["article-meta"]?.["contrib-group"]?.contrib;
-                if (contribs) {
-                    const contribArray = Array.isArray(contribs) ? contribs : [contribs];
-                    authors = contribArray.map(c => {
-                        const name = c?.name || {};
-                        return `${name["given-names"] || ""} ${name.surname || ""}`.trim();
-                    });
-                }
+            const contribs = meta?.["contrib-group"]?.contrib;
+            if (contribs) {
+                const contribArray = Array.isArray(contribs) ? contribs : [contribs];
+                authors = contribArray.map(c => {
+                    const name = c?.name || {};
+                    const parts = [
+                        name.prefix || "",
+                        name["given-names"] || "",
+                        name.surname || "",
+                        name.suffix || ""
+                    ].filter(Boolean);
+                    return parts.join(" ").replace(/\s+/g, " ").trim();
+                });
             }
+
 
             // Date
             const pubDate = meta?.["pub-date"];

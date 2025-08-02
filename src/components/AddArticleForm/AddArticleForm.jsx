@@ -242,11 +242,14 @@ const AddArticleForm = () => {
     const [fetchingPubmed, setFetchingPubmed] = useState(false);
 
     const handleFetchPubmed = async () => {
-        const validPattern = /(pubmed\.ncbi\.nlm\.nih\.gov\/\d+)|(pmc\.ncbi\.nlm\.nih\.gov\/articles\/PMC\d+)/i;
-        if (!validPattern.test(pubmedUrl)) {
+        if (
+            !pubmedUrl.includes("pubmed.ncbi.nlm.nih.gov") &&
+            !pubmedUrl.includes("pmc.ncbi.nlm.nih.gov")
+        ) {
             toast.error("Please enter a valid PubMed or PubMed Central URL");
             return;
         }
+
 
         setFetchingPubmed(true);
         try {
@@ -337,7 +340,11 @@ const AddArticleForm = () => {
                             <Loader2 className="mr-2 h-8 w-8 animate-spin" />
                         )}
                     </div>
-
+                    
+                </div>
+            </div>
+            <div className="add-article-form__row">
+                <div className="add-article-form__field">
                     <Label htmlFor="pubmedLink" className="add-article-form__label">
                         Fetch from PubMed (or PMC)
                     </Label>
@@ -365,9 +372,10 @@ const AddArticleForm = () => {
                             )}
                         </Button>
                     </div>
-                    
                 </div>
             </div>
+            
+
             <div className="add-article-form__row">
                 <div className="add-article-form__field">
                     <Label htmlFor="title" className="add-article-form__label">

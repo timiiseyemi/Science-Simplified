@@ -54,6 +54,7 @@
     "tailwind-merge": "^2.5.3",
     "tailwindcss-animate": "^1.0.7",
     "tiptap": "^1.32.2",
+    "xml2js": "^0.6.2",
     "zod": "^3.25.67",
     "zustand": "^5.0.0"
   },

@@ -237,6 +237,41 @@ const AddArticleForm = () => {
         setNewAuthor("");
     };
   
+
+    const [pubmedUrl, setPubmedUrl] = useState("");
+    const [fetchingPubmed, setFetchingPubmed] = useState(false);
+
+    const handleFetchPubmed = async () => {
+        if (!pubmedUrl.includes("pubmed")) {
+            toast.error("Please enter a valid PubMed or PubMed Central URL");
+            return;
+        }
+        setFetchingPubmed(true);
+        try {
+            const res = await fetch("/api/pubmed", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ url: pubmedUrl }),
+            });
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error || "Failed to fetch PubMed data");
+
+            // Auto-fill fields
+            setTitle(data.title || "");
+            setAuthors(data.authors || []);
+            setPublicationDate(data.publicationDate || "");
+            setSourceLink(data.sourceLink || pubmedUrl);
+            setContent(data.abstract || "");
+
+            toast.success("Article information fetched!");
+        } catch (err) {
+            toast.error("Error: " + err.message);
+        } finally {
+            setFetchingPubmed(false);
+        }
+    };
+
+
     
 
     // const modules = {
@@ -282,6 +317,33 @@ const AddArticleForm = () => {
                     <Label htmlFor="title" className="add-article-form__label">
                         Upload PDF (Optional)
                     </Label>
+                    <Label htmlFor="pubmedLink" className="add-article-form__label">
+                        Fetch from PubMed (or PMC)
+                    </Label>
+                    <div style={{ display: "flex", gap: "1rem" }}>
+                        <Input
+                            id="pubmedLink"
+                            placeholder="Enter PubMed or PubMed Central URL"
+                            value={pubmedUrl}
+                            onChange={(e) => setPubmedUrl(e.target.value)}
+                            className="add-article-form__input"
+                        />
+                        <Button
+                            type="button"
+                            onClick={handleFetchPubmed}
+                            disabled={fetchingPubmed}
+                            className="btn btn-secondary"
+                        >
+                            {fetchingPubmed ? (
+                                <>
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    Fetching...
+                                </>
+                            ) : (
+                                "Fetch"
+                            )}
+                        </Button>
+                    </div>
                     <div
                         style={{
                             display: "flex",

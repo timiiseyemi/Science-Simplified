@@ -12,6 +12,26 @@ const getText = (val) => {
     return "";
 };
 
+// Recursive function to collect text with headings
+const collectTextWithHeadings = (node, paragraphs = []) => {
+    if (!node) return paragraphs;
+
+    if (typeof node === "string") {
+        paragraphs.push(node);
+    } else if (Array.isArray(node)) {
+        node.forEach(n => collectTextWithHeadings(n, paragraphs));
+    } else if (typeof node === "object") {
+        if (node.title) {
+            paragraphs.push(`\n\n## ${getText(node.title)}\n`);
+        }
+        if (node.p) collectTextWithHeadings(node.p, paragraphs);
+        if (node.sec) collectTextWithHeadings(node.sec, paragraphs);
+        if (node["#text"]) paragraphs.push(getText(node["#text"]));
+    }
+
+    return paragraphs;
+};
+
 export async function POST(req) {
     try {
         const { url } = await req.json();
@@ -53,6 +73,7 @@ export async function POST(req) {
         let date = "";
         let doi = null;
         let abstract = "";
+        let content = "";
 
         if (db === "pubmed") {
             // PubMed XML
@@ -71,7 +92,7 @@ export async function POST(req) {
                 abstract = absData.map(obj => getText(obj)).join("\n\n");
             }
 
-            // Authors (normalize + full name)
+            // Authors
             if (article.AuthorList?.Author) {
                 const authorData = Array.isArray(article.AuthorList.Author)
                     ? article.AuthorList.Author
@@ -86,12 +107,33 @@ export async function POST(req) {
             const pubDate = article.Journal?.JournalIssue?.PubDate || {};
             date = [pubDate.Year, pubDate.Month, pubDate.Day].filter(Boolean).join(" ");
 
-            // DOI
+            // DOI + check for PMC ID
             const ids =
                 parsed?.PubmedArticleSet?.PubmedArticle?.PubmedData?.ArticleIdList?.ArticleId || [];
             doi = Array.isArray(ids)
                 ? ids.find(i => i.$?.IdType === "doi")?._
                 : ids._;
+            const pmcId = Array.isArray(ids)
+                ? ids.find(i => i.$?.IdType === "pmc")?._
+                : null;
+
+            content = abstract;
+
+            // If PubMed has a linked PMC ID, fetch full text
+            if (pmcId) {
+                const pmcResponse = await fetch(
+                    `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id=${pmcId}&retmode=xml`
+                );
+                if (pmcResponse.ok) {
+                    const pmcXml = await pmcResponse.text();
+                    const pmcParsed = await xml2js.parseStringPromise(pmcXml, { explicitArray: false });
+                    const pmcArticle = pmcParsed?.["pmc-articleset"]?.article;
+                    if (pmcArticle?.body) {
+                        const bodyParagraphs = collectTextWithHeadings(pmcArticle.body, []);
+                        content = [abstract, bodyParagraphs.join("\n\n")].filter(Boolean).join("\n\n");
+                    }
+                }
+            }
         } else if (db === "pmc") {
             // PMC XML
             const article = parsed?.["pmc-articleset"]?.article;
@@ -102,7 +144,7 @@ export async function POST(req) {
             const meta = article?.front?.["article-meta"];
             title = getText(meta?.["title-group"]?.["article-title"]);
 
-            // Authors (normalize + full name)
+            // Authors
             const contribs = meta?.["contrib-group"]?.contrib;
             if (contribs) {
                 const contribArray = Array.isArray(contribs) ? contribs : [contribs];
@@ -145,6 +187,15 @@ export async function POST(req) {
                     .map(a => (typeof a === "string" ? a : getText(a?.["#text"] || a)))
                     .join("\n\n");
             }
+
+            // Full content (abstract + body with headings)
+            const body = article?.body;
+            if (body) {
+                const bodyParagraphs = collectTextWithHeadings(body, []);
+                content = [abstract, bodyParagraphs.join("\n\n")].filter(Boolean).join("\n\n");
+            } else {
+                content = abstract;
+            }
         }
 
         return NextResponse.json({
@@ -153,7 +204,7 @@ export async function POST(req) {
             publicationDate: date,
             doi,
             sourceLink: doi ? `https://doi.org/${doi}` : url,
-            abstract
+            content
         });
     } catch (err) {
         console.error("PubMed fetch error:", err);

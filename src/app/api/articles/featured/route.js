@@ -9,13 +9,13 @@ export async function GET() {
     const featuredResult = await query(
       "SELECT article_ids FROM featured LIMIT 1"
     );
-    const articleIds: number[] = featuredResult.rows[0]?.article_ids ?? [];
+    const articleIds = featuredResult.rows[0]?.article_ids || [];
 
     if (!articleIds.length) {
       return NextResponse.json([]);
     }
 
-    // 2) Fetch rows, join profile, alias fields, and preserve order
+    // 2) Fetch rows, join profile, alias fields, preserve order
     const sql = `
       SELECT
         a.*,
@@ -29,8 +29,8 @@ export async function GET() {
              (a.certifiedby->0->>'userId'),   -- array case: [{ userId, ... }]
              (a.certifiedby->>'userId')       -- object case: { userId, ... }
            )::INT = p.user_id
-      WHERE a.id = ANY($1)
-      ORDER BY array_position($1, a.id);       -- preserve requested order
+      WHERE a.id = ANY($1::int[])
+      ORDER BY array_position($1::int[], a.id);
     `;
 
     const { rows } = await query(sql, [articleIds]);

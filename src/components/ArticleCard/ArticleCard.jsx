@@ -35,6 +35,8 @@ function ArticleCard({
     summary,
     authorImageUrl,
     authorName,
+    authorCreds,        // ← NEW (optional)
+    authorInstitution,  // ← NEW (optional)
     pageType,
 }) {
     const router = useRouter();
@@ -201,6 +203,20 @@ function ArticleCard({
                     <span className="article-card__author-name">
                         {authorName || "Anonymous"}
                     </span>
+                    {(authorCreds || authorInstitution) && (
+                    <div className="article-card__author-meta">
+                        {/* creds on the left; institution next line (or join with a dot if you prefer) */}
+                        {authorCreds && (
+                        <span className="article-card__author-creds">{authorCreds}</span>
+                        )}
+                        {authorInstitution && (
+                        <span className="article-card__author-institution">
+                            {authorCreds ? <><br/></> : null}
+                            {authorInstitution}
+                        </span>
+                        )}
+                    </div>
+                    )}
                 </div>
             </div>
         </article>

@@ -18,29 +18,27 @@ const ArticlesSection = ({ articles, loading, error, sectionTitle }) => {
         ) : error ? (
           <div className="articles-section__error">
             <Unplug className="articles-section__error__icon" />
-            <p className="body-large">
-              Something went wrong. Please try again later.
-            </p>
+            <p className="body-large">Something went wrong. Please try again later.</p>
           </div>
         ) : (
           <div className="articles-section__list">
             {articles.map((article) => {
               // prefer joined profile name; fall back to publisher_name; else Anonymous
               const authorName =
-                article.author_name || article.publisher_name || "Anonymous";
+                article.name || article.publisher_name || "Anonymous";
 
               return (
                 <ArticleCard
                   key={article.id}
                   id={article.id}
                   imageUrl={article.image_url}
-                  date={article.publication_date}
+                  date={article.publication_date}                 {/* <-- was article.date */}
                   title={article.title}
                   summary={article.summary}
-                  authorImageUrl={article.author_image_url}
+                  authorImageUrl={article.photo}                   {/* joined from profile */}
                   authorName={authorName}
-                  authorCreds={article.author_degree}
-                  authorInstitution={article.author_university}
+                  authorCreds={article.degree || null}             {/* <-- NEW */}
+                  authorInstitution={article.university || null}   {/* <-- NEW */}
                 />
               );
             })}

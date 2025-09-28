@@ -245,21 +245,25 @@ function ArticleCard({
             <FallbackAuthorImage authorName={displayAuthorName} />
           )}
 
-            <div className="article-card__author-text">
-            <div className="article-card__author-line">
-                <span className="article-card__author-name">{displayAuthorName}</span>
+          <div className="article-card__author-text">
+            <span className="article-card__author-name">
+              {displayAuthorName}
+            </span>
+
+            {(displayAuthorCreds || displayAuthorInstitution) && (
+              <div className="article-card__author-meta">
                 {displayAuthorCreds && displayAuthorCreds !== "No Degree" && (
-                <span className="article-card__author-degree">, {displayAuthorCreds}</span>
+                <span className="article-card__author-creds">{displayAuthorCreds}</span>
                 )}
-            </div>
-
-            {displayAuthorInstitution && (
-                <div className="article-card__author-institution">
-                {displayAuthorInstitution}
-                </div>
+                {displayAuthorInstitution && (
+                  <span className="article-card__author-institution">
+                    {displayAuthorCreds ? <><br /></> : null}
+                    {displayAuthorInstitution}
+                  </span>
+                )}
+              </div>
             )}
-            </div>
-
+          </div>
         </div>
       </div>
     </article>

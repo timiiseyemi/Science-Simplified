@@ -252,8 +252,10 @@ function ArticleCard({
 
             {(displayAuthorCreds || displayAuthorInstitution) && (
               <div className="article-card__author-meta">
-                {displayAuthorCreds && displayAuthorCreds !== "No Degree" && (
-                <span className="article-card__author-creds">{displayAuthorCreds}</span>
+                {displayAuthorCreds && (
+                  <span className="article-card__author-creds">
+                    {displayAuthorCreds}
+                  </span>
                 )}
                 {displayAuthorInstitution && (
                   <span className="article-card__author-institution">

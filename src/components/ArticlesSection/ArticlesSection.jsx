@@ -31,18 +31,17 @@ const ArticlesSection = ({ articles, loading, error, sectionTitle }) => {
 
               return (
                 <ArticleCard
-                    id={article.id}
-                    key={article.id}
-                    imageUrl={article.image_url}
-                    date={article.publication_date}
-                    title={article.title}
-                    summary={article.summary}
-                    authorImageUrl={article.author_image_url}   // instead of article.photo
-                    authorName={article.author_name}            // instead of authorName fallback
-                    authorCreds={article.author_degree}
-                    authorInstitution={article.author_university}
-                    />
-
+                  key={article.id}
+                  id={article.id}
+                  imageUrl={article.image_url}
+                  date={article.publication_date}
+                  title={article.title}
+                  summary={article.summary}
+                  authorImageUrl={article.author_image_url}
+                  authorName={authorName}
+                  authorCreds={article.author_degree}
+                  authorInstitution={article.author_university}
+                />
               );
             })}
           </div>

@@ -5,6 +5,7 @@ import Footer from "@/components/Footer/Footer";
 import ThemeProvider from "@/components/ThemeProvider/ThemeProvider";
 
 import { ToastContainer } from "react-toastify";
+import { Analytics } from "@vercel/analytics/react";
 
 // Importing Outfit font from Google Fonts
 const outfitFont = Outfit({
@@ -23,6 +24,8 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body className={`${outfitFont.variable} antialiased`}>
+
+                <Analytics />
 
                 <ThemeProvider>
                     <ToastContainer

@@ -21,7 +21,7 @@ header {
 }
 
 .header-content {
-    width: 95%; /* ⬅️ reduces container width so content sits closer to left */
+    width: 85%; /* ⬅️ reduces container width so content sits closer to left */
     margin: 0 auto 0 2rem; /* ⬅️ moves navbar slightly left */
     display: flex;
     align-items: center;
@@ -218,7 +218,8 @@ header {
       align-items: center;
       gap: 2.25rem;
       list-style: none;
-      font-size: 1.8rem;
+   
+      font-size: 1.8rem;  //   top ones
 
   
       li {
@@ -268,7 +269,8 @@ header {
                 padding: 0.85rem 1.2rem;
                 text-align: left;
                 color: #444;
-                font-size: 1.7rem;
+                
+                font-size: 1.7rem; // dropdown ones
                 background: none;
                 border: none;
                 cursor: pointer;

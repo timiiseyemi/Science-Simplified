@@ -947,7 +947,7 @@ export const sites = {
       },
       
       // Images (Home)
-      homeBG: "hs_bg_logo.png", //home/homeBG
+      homeBG: "birdofparadiselogo.jpg", //home/homeBG
       homeExploreAllBG: "Vitiligo_ExploreAllBG.png", //home/homeExploreAllBG
       // Images (General)
       logoWithText: "hssimplified_nobg.png", //logoWithText

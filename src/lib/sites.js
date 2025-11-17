@@ -960,10 +960,10 @@ export const sites = {
       loginBGBottom: "HS_loginBGBottom.webp", //loginBGTop
 
       //Text
-      text_homeTitleDescription: "Collection of simplified Vitiligo articles certified by experts. ",
+      text_homeTitleDescription: "Collection of simplified HS articles certified by experts. ",
       text_exploreAllTitle: "We give knowledge to patients, families, and caregivers",
-      text_exploreAllDescription: "Collection of simplified Vitiligo articles certified by experts.",
-      text_footerDescription: "Provide accessible, up-to-date, and comprehensive information about Vitiligo to patients, families, and caregivers. We aim to empower those affected by Vitiligo with the knowledge and resources they need to navigate their journey.",
+      text_exploreAllDescription: "Collection of simplified HS articles certified by experts.",
+      text_footerDescription: "Provide accessible, up-to-date, and comprehensive information about HS to patients, families, and caregivers. We aim to empower those affected by HS with the knowledge and resources they need to navigate their journey.",
 
       // About
       about_teamMember1Image: "kyle.png",
@@ -976,12 +976,12 @@ export const sites = {
       about_teamMember2Title: "HS Foundation CEO",
       about_teamMember2Bio: "Brent is the Chief Executive Officer of the HS Foundation. (Plcaeholder Bio)",
 
-      about_teamMember3Image: "expert-placeholder.png",
-      about_teamMember3Name: "Faculty Advisor Name",
+      about_teamMember3Image: "Leandra.jpg",
+      about_teamMember3Name: "Leandra Barnes",
       about_teamMember3Title: "Faculty Advisor",
-      about_teamMember3Bio: "Faculty Advisor Bio",
+      about_teamMember3Bio: "Leandra is an Instructor of Dermatology at the Stanford School of Medicine. She specializes in hidradenitis clinical care and research",
 
-      about_supporter1Logo: "HS_foundation_logo.webp",
+      about_supporter1Logo: "hs-foundation.png",
       about_supporter1Name: "HS Foundation",
       about_supporter1Width: 300,
       about_supporter1Height: 300,

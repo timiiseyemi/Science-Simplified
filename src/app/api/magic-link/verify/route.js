@@ -55,11 +55,56 @@ export async function GET(req) {
     // Mark token as used
     await tenantQuery(tenant, `UPDATE magic_links SET used = true WHERE token_hash = $1`, [tokenHash]);
 
-    // Redirect to tenant domain
+     // ---------------------- 🔥 NEW: Fetch full user details ----------------------
+     const userResult = await tenantQuery(
+      tenant,
+      `SELECT * FROM email_credentials WHERE LOWER(email) = $1`,
+      [magicLink.email.toLowerCase()]
+    );
+
+    if (userResult.rows.length === 0) {
+      return NextResponse.json({ error: "No user for this email" }, { status: 404 });
+    }
+
+    const user = userResult.rows[0];
+
+    // Check if admin
+    const adminResult = await tenantQuery(
+      tenant,
+      "SELECT * FROM admin_users WHERE LOWER(email) = $1",
+      [user.email]
+    );
+    const isAdmin = adminResult.rows.length > 0;
+
+    // Generate JWT (same as login)
+    const jwt = sign(
+      {
+        email: user.email,
+        isAdmin,
+        role: user.role,
+        id: user.id,
+        name: `${user.first_name} ${user.last_name}`,
+      },
+      process.env.JWT_SECRET || "your-secret-key",
+      { expiresIn: "1d" }
+    );
+
+    // Set auth cookie (same)
+    const cookie = serialize("auth", jwt, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 86400,
+      path: "/",
+    });
+
+    // Redirect to frontend
     const domain = TENANT_DOMAINS[tenant] || "http://localhost:3000";
     const finalUrl = `${domain}/assigned-articles`;
 
-    return NextResponse.redirect(finalUrl);
+    const response = NextResponse.redirect(finalUrl);
+    response.headers.set("Set-Cookie", cookie);
+    return response;
 
   } catch (err) {
     console.error("VERIFY ERROR:", err);

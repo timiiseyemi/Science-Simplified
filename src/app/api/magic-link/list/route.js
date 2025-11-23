@@ -4,6 +4,23 @@ import { tenant } from "@/lib/config";
 import { sites } from "@/lib/sites";
 
 export async function GET() {
+
+    const TENANT_DOMAINS = {
+        NF: "https://nfsimplified.com",
+        EB: "https://sseb.vercel.app",
+        Vitiligo: "https://ssvitiligo.vercel.app",
+        CF: "https://sscf-coral.vercel.app",
+        ALS: "https://ssals-ten.vercel.app",
+        HS: "https://science-simplified-mu.vercel.app/",
+        Ashermans: "https://ssashermans.vercel.app",
+        RYR1: "https://ssryr1.vercel.app",
+        Aicardi: "https://ssaicardi.vercel.app",
+        Progeria: "https://ssprogeria.vercel.app",
+        RETT: "https://ssrett.vercel.app",
+        Canavan: "https://sscanavan.vercel.app",
+        HUNTINGTONS: "https://sshuntingtons.vercel.app", 
+      };
+
     try {
         const allLinks = [];
 
@@ -20,7 +37,7 @@ export async function GET() {
                 allLinks.push({
                     ...row,
                     tenant: key,
-                    url: `${process.env.APIHOSTNAME}/api/magic-link/verify?tenant=${key}&token=__TOKEN__`
+                    url: `${TENANT_DOMAINS[key]}/api/magic-link/verify?tenant=${key}&token=__TOKEN__`
                 });
             });
         } catch (e) {

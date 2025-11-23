@@ -2,6 +2,8 @@
 import { NextResponse } from "next/server";
 import crypto from "crypto";
 import { tenantQuery } from "@/lib/tenantDb";
+import { sign } from "jsonwebtoken";
+
 
 // Tenant → Domain mapping (final)
 const TENANT_DOMAINS = {

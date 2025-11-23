@@ -9,9 +9,11 @@ const ADMIN_API = [
   "/api/articles/featured",
 ];
 
+// NEW: protect admin UI pages (not API)
+const ADMIN_PAGES = ["/admin/magic-links"];
+
 export async function middleware(req) {
   const { pathname } = req.nextUrl;
-  console.log(pathname);
 
   // 1) Public pages
   if (
@@ -22,13 +24,16 @@ export async function middleware(req) {
     return NextResponse.next();
   }
 
-  // 2) Must be authenticated
+  // 2) Must be authenticated (for everything else)
   const token = req.cookies.get("auth")?.value;
+
   if (!token) {
-    // For pages, redirect. For APIs, return JSON 401.
+    // APIs → JSON
     if (pathname.startsWith("/api")) {
       return NextResponse.json({ message: "Not authenticated" }, { status: 401 });
     }
+
+    // Pages → redirect
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
@@ -43,22 +48,30 @@ export async function middleware(req) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
-  // 3) If this is an admin‑only API, you must be isAdmin
+  /** -----------------------------------------------------
+   * 3) Admin-ONLY APIs
+   * --------------------------------------------------- */
   if (pathname.startsWith("/api")) {
-    // find any admin path that matches the start of pathname
     const isAdminApi = ADMIN_API.some((p) => pathname.startsWith(p));
-    console.log(isAdminApi);
-    console.log(pathname);
     if (isAdminApi && !decoded.isAdmin) {
       return NextResponse.json({ message: "Forbidden" }, { status: 403 });
     }
   }
 
-  // 4) All good
+  /** -----------------------------------------------------
+   * 4) Admin-ONLY PAGES (Magic Link Admin)
+   * --------------------------------------------------- */
+  const isAdminPage = ADMIN_PAGES.some((p) => pathname.startsWith(p));
+
+  if (isAdminPage && !decoded.isAdmin) {
+    // non-admin → redirect home
+    return NextResponse.redirect(new URL("/", req.url));
+  }
+
+  // 5) All good
   return NextResponse.next();
 }
 
 export const config = {
-  // run on everything except your public assets (adjust as needed)
   matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
 };

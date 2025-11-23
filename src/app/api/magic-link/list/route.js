@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { tenantQuery } from "@/lib/tenantDb";
+import { tenant } from "@/lib/config";
 import { sites } from "@/lib/sites";
 
 export async function GET() {

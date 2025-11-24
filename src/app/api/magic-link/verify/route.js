@@ -46,7 +46,7 @@ export async function GET(req) {
     const sql = `
       SELECT * 
       FROM magic_links 
-      WHERE token_hash = $1 AND used = false
+      WHERE token_hash = $1
     `;
     const { rows } = await tenantQuery(tenant, sql, [tokenHash]);
 

@@ -17,6 +17,8 @@ const Footer = () => {
                             src={brandlogo}
                             alt="logo"
                             className="footer__logo"
+                            width={100}
+                            height={100}
                         />
                         <p className="footer__description">
                             {tenant.text_footerDescription}

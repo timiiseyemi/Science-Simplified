@@ -27,6 +27,7 @@ import { tenant as defaultTenant } from "@/lib/config";
 // };
 const tenant_domain = defaultTenant.domain;
 
+export const dynamic = "force-dynamic";
 export async function GET(req) {
 
 

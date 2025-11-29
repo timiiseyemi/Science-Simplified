@@ -18,7 +18,7 @@ const PendingArticles = () => {
     useEffect(() => {
         const fetchArticles = async () => {
             try {
-                const response = await fetch("/api/articles/pending");
+                const response = await fetch("/api/articles/pending-with-assignments");
                 if (!response.ok) throw new Error("Failed to fetch articles");
                 const data = await response.json();
                 setArticles(data);

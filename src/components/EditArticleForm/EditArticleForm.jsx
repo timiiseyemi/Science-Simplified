@@ -433,50 +433,67 @@ const EditArticleForm = ({
             </div>
 
             <div className="edit-article-form__field">
-                <Label className="edit-article-form__label">Cover image</Label>
-                <div className="edit-article-form__input !h-auto">
-                    <div className="flex flex-col-reverse md:flex-row items-center gap-16">
-                        <div className="flex flex-col-reverse md:flex-row items-center gap-16">
+    <Label className="edit-article-form__label">Cover image</Label>
+    <div className="edit-article-form__input !h-auto">
+        <div className="flex flex-col-reverse md:flex-row items-center gap-16">
 
-    {/* AI IMAGE BUTTON */}
-    <div className="flex flex-col gap-4">
-        <Button
-            type="button"
-            className="btn btn-secondary ai-generate-btn"
-            disabled={isGeneratingImage}
-            onClick={handleGenerateAIImage}
-        >
-            {isGeneratingImage ? (
-                <>
-                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                    Generating...
-                </>
-            ) : (
-                "Generate AI Image"
-            )}
-        </Button>
+            <div className="flex flex-col gap-4">
 
-        {/* Manual Upload */}
-        <ImageUpload
-            onImageUpload={handleImageUpload}
-            initialImageUrl={articleData?.image_url}
-        />
-    </div>
+                {/* MANUAL UPLOAD (force update imageUrl immediately) */}
+                <ImageUpload
+                    onImageUpload={(url) => {
+                        setImageUrl(url);     // <-- ensures imageUrl updates on manual upload
+                        toast.success("Image uploaded");
+                    }}
+                    initialImageUrl={articleData?.image_url}
+                />
 
-    {imageUrl && (
-        <Image
-            src={imageUrl}
-            alt={title}
-            width={320}
-            height={200}
-            style={{ objectFit: "contain" }}
-        />
-    )}
-</div>
-                    </div>
-                </div>
+                {/* GENERATE AI IMAGE — white button */}
+                <Button
+                    type="button"
+                    className="btn btn-primary"
+                    disabled={isGeneratingImage}
+                    onClick={handleGenerateAIImage}
+                >
+                    {isGeneratingImage ? (
+                        <>
+                            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                            Generating...
+                        </>
+                    ) : (
+                        "Generate AI Image"
+                    )}
+                </Button>
+
+                {/* REMOVE IMAGE (now works for BOTH manual + AI uploads) */}
+                {imageUrl && (
+                    <Button
+                        type="button"
+                        className="btn btn-primary-red"
+                        onClick={() => {
+                            setImageUrl(null);
+                            toast.success("Image removed");
+                        }}
+                    >
+                        Remove Image
+                    </Button>
+                )}
             </div>
 
+            {/* Preview */}
+            {imageUrl && (
+                <Image
+                    src={imageUrl}
+                    alt="cover image"
+                    width={320}
+                    height={200}
+                    style={{ objectFit: "contain" }}
+                />
+            )}
+
+        </div>
+    </div>
+</div>
             {/* Button actions */}
             
             <div className="edit-article-form__actions">

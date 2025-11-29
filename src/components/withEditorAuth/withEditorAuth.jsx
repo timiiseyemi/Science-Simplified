@@ -13,7 +13,9 @@ export const withEditorAuth = (WrappedComponent) => {
                 try {
                     const response = await fetch("/api/auth/session");
                     const user = await response.json();
-                    if (user.isLoggedIn && user.role === "editor") {
+
+                    // TEMP FIX → allow both admin + editor in dev
+                    if (user.isLoggedIn && (user.role === "editor" || user.role === "admin")) {
                         setAuthenticated(true);
                     } else {
                         router.push("/login");

@@ -24,11 +24,11 @@ const faqsData = [
     },
     {
         question: `What type of information does ${tenant.name} provide?`,
-        answer: `We offer simplified articles and resources on ${tenant.disease}, all reviewed by ${tenant.shortName} experts from REiNS, to ensure accuracy and accessibility for all users.`,
+        answer: `We offer simplified articles and resources on ${tenant.disease}, all reviewed by ${tenant.shortName} experts, to ensure accuracy and accessibility for all users.`,
     },
     {
         question: `Who reviews the information on ${tenant.name}?`,
-        answer: `All articles and resources on our website are (soon to be) reviewed by ${tenant.shortName} experts from REiNS, ensuring that the information provided is accurate, reliable, and up-to-date.`,
+        answer: `All articles and resources on our website are (soon to be) reviewed by ${tenant.shortName} experts, ensuring that the information provided is accurate, reliable, and up-to-date.`,
     },
     {
         question: `How can ${tenant.name} help those living with ${tenant.shortName}?`,

@@ -17,30 +17,33 @@ const EditorAssignedArticles = () => {
 
     const { user } = useAuthStore();
 
-    // Fetching assigned articles based on the editor's ID
+    // Fetch assigned articles from correct API route
     useEffect(() => {
-        if (user?.userId) {
-            const fetchArticles = async () => {
-                setLoading(true);
-                setError(false);
-                try {
-                    const response = await fetch(
-                        `/api/editors/assigned-articles?editorId=${user.userId}`
-                    );
-                    if (!response.ok)
-                        throw new Error("Failed to fetch articles");
-                    const data = await response.json();
-                    setArticles(data);
-                } catch (error) {
-                    console.error("Error fetching assigned articles:", error);
-                    setError(true);
-                } finally {
-                    setLoading(false);
-                }
-            };
+        if (!user?.userId) return;
 
-            fetchArticles();
-        }
+        const fetchAssigned = async () => {
+            setLoading(true);
+            setError(false);
+
+            try {
+                // Correct endpoint (exists in your API structure)
+                const response = await fetch(
+                    `/api/articles/pending-with-assignments?editorId=${user.userId}`
+                );
+
+                if (!response.ok) throw new Error("Failed to fetch assigned articles");
+
+                const data = await response.json();
+                setArticles(data);
+            } catch (err) {
+                console.error("Error fetching assigned articles:", err);
+                setError(true);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchAssigned();
     }, [user?.userId]);
 
     return (
@@ -56,7 +59,6 @@ const EditorAssignedArticles = () => {
                         <span> Back</span>
                     </Link>
 
-                    {/* Pass loading, error, and articles to ArticlesListPaginated */}
                     <ArticlesListPaginated
                         articles={articles}
                         articlesPerPage={6}

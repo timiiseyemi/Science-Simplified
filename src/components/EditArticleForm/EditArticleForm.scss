@@ -208,3 +208,14 @@
         }
     }
 }
+.ai-generate-btn {
+    min-width: 200px;
+    height: 44px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ai-generate-btn[disabled] {
+    opacity: .6;
+}

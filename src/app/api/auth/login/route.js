@@ -1,6 +1,6 @@
 // app/api/auth/login/route.js
 import { query } from "@/lib/db";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { sign } from "jsonwebtoken";
 import { NextResponse } from "next/server";
 import { serialize } from "cookie";

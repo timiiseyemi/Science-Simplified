@@ -1,6 +1,6 @@
 // app/api/create-editor/route.js
 import { query } from "@/lib/db";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/adminGuard"; // or adminGuard you already have
 

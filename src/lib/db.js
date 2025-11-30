@@ -1,20 +1,15 @@
 // lib/db.js
-const { Pool } = require("pg");
+
+import { Pool } from "pg";
 
 const pool = new Pool({
-    user: process.env.PGUSER,
-    host: process.env.PGHOST,
-    database: process.env.PGDATABASE,
-    password: process.env.PGPASSWORD,
-    port: parseInt(process.env.PGPORT || "5432"),
+    connectionString: process.env.DATABASE_URL,
     ssl: {
         rejectUnauthorized: false,
-        require: true,
     },
 });
 
-// Helper to execute SQL queries
-async function query(text, params) {
+export async function query(text, params) {
     try {
         const start = Date.now();
         const res = await pool.query(text, params);
@@ -27,7 +22,4 @@ async function query(text, params) {
     }
 }
 
-module.exports = {
-    query,
-    pool,
-};
+export default pool;

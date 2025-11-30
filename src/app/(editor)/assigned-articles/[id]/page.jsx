@@ -29,7 +29,7 @@ const ReviewAssignedArticle = ({ params }) => {
     const fetchArticle = async () => {
         setIsLoading(true);
         try {
-            const response = await fetch(`/api/articles/pending/${id}`);
+            const response = await fetch(`/api/articles/${id}`);
             if (!response.ok) throw new Error("Failed to fetch article");
             const data = await response.json();
             setArticle(data);
@@ -45,22 +45,20 @@ const ReviewAssignedArticle = ({ params }) => {
         fetchArticle();
     }, [id]);
 
+    // ✔ EDITORS SHOULD UPDATE THE MAIN article TABLE
     const handleSaveEdits = async (updatedArticle) => {
         setLoadingStates((prev) => ({ ...prev, saving: true }));
         try {
-            const response = await fetch(
-                `/api/articles/pending/actions/update`,
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ id, ...updatedArticle }),
-                }
-            );
+            const response = await fetch(`/api/articles/actions/update`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id, ...updatedArticle }),
+            });
+
             if (!response.ok) throw new Error("Failed to save changes");
 
-            // Notify success and refetch article
             toast.success("Changes saved!");
-            await fetchArticle(); // Fetch updated article data
+            await fetchArticle();
         } catch (error) {
             console.error("Error saving edits:", error);
             toast.error("Error saving changes");
@@ -69,22 +67,20 @@ const ReviewAssignedArticle = ({ params }) => {
         }
     };
 
+    // ✔ EDITORS SHOULD PUBLISH USING THE MAIN article TABLE
     const handlePublish = async (updatedArticle) => {
         setLoadingStates((prev) => ({ ...prev, publishing: true }));
         try {
-            // First, save the changes
             await handleSaveEdits(updatedArticle);
 
-            // Then, publish the article (using the original API structure)
-            const response = await fetch(
-                `/api/articles/pending/actions/publish`,
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ id, certifiedby: user }), // Maintain original structure
-                }
-            );
+            const response = await fetch(`/api/articles/actions/publish`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id, certifiedby: user }),
+            });
+
             if (!response.ok) throw new Error("Failed to publish article");
+
             toast.success("Article published!");
             router.push("/assigned-articles");
         } catch (error) {
@@ -95,18 +91,18 @@ const ReviewAssignedArticle = ({ params }) => {
         }
     };
 
+    // ✔ EDITORS SHOULD DELETE FROM THE MAIN article TABLE
     const handleDelete = async () => {
         setLoadingStates((prev) => ({ ...prev, deleting: true }));
         try {
-            const response = await fetch(
-                `/api/articles/pending/actions/delete`,
-                {
-                    method: "DELETE",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({ id }),
-                }
-            );
+            const response = await fetch(`/api/articles/actions/delete`, {
+                method: "DELETE",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ id }),
+            });
+
             if (!response.ok) throw new Error("Failed to delete article");
+
             toast.success("Article deleted!");
             router.push("/assigned-articles");
         } catch (error) {

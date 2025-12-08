@@ -235,7 +235,7 @@ export default async function AboutPage() {
                     </section>
 
                     {/* Scientific Experts Section */}
-                    <section
+                    {/* <section
                         className={`${sectionClass} ${sectionClass}--experts`}
                     >
                         <h3 className={sectionTitleClass}>
@@ -328,7 +328,7 @@ export default async function AboutPage() {
                                 )}
                             </Marquee>
                         </div>
-                    </section>
+                    </section> */}
 
                     {/* Get Involved Section */}
                     <section

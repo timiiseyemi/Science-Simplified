@@ -49,7 +49,7 @@ const ReviewAssignedArticle = ({ params }) => {
     const handleSaveEdits = async (updatedArticle) => {
         setLoadingStates((prev) => ({ ...prev, saving: true }));
         try {
-            const response = await fetch(`/api/articles/actions/update`, {
+            const response = await fetch(`/api/articles/pending/actions/update`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ id, ...updatedArticle }),
@@ -73,7 +73,7 @@ const ReviewAssignedArticle = ({ params }) => {
         try {
             await handleSaveEdits(updatedArticle);
 
-            const response = await fetch(`/api/articles/actions/publish`, {
+            const response = await fetch(`/api/articles/pending/actions/publish`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ id, certifiedby: user }),
@@ -95,7 +95,7 @@ const ReviewAssignedArticle = ({ params }) => {
     const handleDelete = async () => {
         setLoadingStates((prev) => ({ ...prev, deleting: true }));
         try {
-            const response = await fetch(`/api/articles/actions/delete`, {
+            const response = await fetch(`/api/articles/pending/actions/delete`, {
                 method: "DELETE",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ id }),

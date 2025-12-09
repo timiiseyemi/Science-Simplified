@@ -16,6 +16,9 @@ export function requireAdmin(req) {
     return NextResponse.json({ message: "Invalid token" }, { status: 401 });
   }
 
+  console.log("Decoded JWT payload:", payload);
+
+
   if (!payload.isAdmin && payload.role !== "editor") {
     return NextResponse.json({ message: "Forbidden" }, { status: 403 });
   }

@@ -5,7 +5,7 @@ import { requireAdmin } from "@/lib/adminGuard";
 
 // Only allow DELETE method
 export async function DELETE(req) {
-    const adminCheck = requireAdmin();
+    const adminCheck = requireAdmin(req);
     if (adminCheck instanceof NextResponse) return adminCheck;
     
     const { id } = await req.json(); // Parse JSON body from the request

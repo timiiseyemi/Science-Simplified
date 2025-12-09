@@ -3,9 +3,8 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { verify } from "jsonwebtoken";
 
-export function requireAdmin() {
-  const cookieStore = cookies();
-  const token = cookieStore.get("auth")?.value;
+export function requireAdmin(req) {
+  const token = req.cookies.get("auth")?.value;
   if (!token) {
     return NextResponse.json({ message: "Not authenticated" }, { status: 401 });
   }
@@ -17,10 +16,10 @@ export function requireAdmin() {
     return NextResponse.json({ message: "Invalid token" }, { status: 401 });
   }
 
-  // Allow if admin, or if role is exactly "editor"
   if (!payload.isAdmin && payload.role !== "editor") {
     return NextResponse.json({ message: "Forbidden" }, { status: 403 });
   }
 
-  return payload; // success → downstream can use the decoded payload if needed
+  return payload;
 }
+

@@ -6,7 +6,7 @@ import { requireAdmin } from "@/lib/adminGuard";
 
 export async function GET() {
 
-    const adminCheck = requireAdmin();
+    const adminCheck = requireAdmin(req);
     if (adminCheck instanceof NextResponse) return adminCheck;
 
     // const TENANT_DOMAINS = {

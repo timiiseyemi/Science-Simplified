@@ -4,7 +4,7 @@ import { requireAdmin } from "@/lib/adminGuard";
 import { tenant as defaultTenant } from "@/lib/config";
 
 export async function DELETE(req) {
-  const adminCheck = requireAdmin();
+  const adminCheck = requireAdmin(req);
   if (adminCheck instanceof NextResponse) return adminCheck;
 
   try {

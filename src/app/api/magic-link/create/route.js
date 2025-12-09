@@ -25,7 +25,7 @@ import { requireAdmin } from "@/lib/adminGuard";
 const tenant_domain = defaultTenant.domain;
 
 export async function POST(req) {
-  const adminCheck = requireAdmin();
+  const adminCheck = requireAdmin(req);
   if (adminCheck instanceof NextResponse) return adminCheck;
 
   try {

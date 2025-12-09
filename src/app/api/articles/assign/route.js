@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/adminGuard";
 
 export async function POST(request) {
-    const adminCheck = requireAdmin();
+    const adminCheck = requireAdmin(req);
     if (adminCheck instanceof NextResponse) return adminCheck;
     
     try {

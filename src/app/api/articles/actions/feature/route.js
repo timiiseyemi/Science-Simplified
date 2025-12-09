@@ -4,7 +4,7 @@ import { requireAdmin } from "@/lib/adminGuard";
 
 
 export async function POST(req) {
-    const adminCheck = requireAdmin();
+    const adminCheck = requireAdmin(req);
     if (adminCheck instanceof NextResponse) return adminCheck;
     
     const { articleId, shouldBeFeatured } = await req.json();

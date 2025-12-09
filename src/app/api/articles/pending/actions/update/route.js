@@ -4,7 +4,7 @@ import { requireAdmin } from "@/lib/adminGuard";
 
 // Only allow POST method
 export async function POST(req) {
-    const adminCheck = requireAdmin();
+    const adminCheck = requireAdmin(req);
     if (adminCheck instanceof NextResponse) return adminCheck;
     
     const { id, title, tags, innertext, summary, article_link, image_url, authors, publication_date } =

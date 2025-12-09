@@ -52,11 +52,12 @@ export async function middleware(req) {
    * 3) Admin-ONLY APIs
    * --------------------------------------------------- */
   if (pathname.startsWith("/api")) {
-    const isAdminApi = ADMIN_API.some((p) => pathname.startsWith(p));
+    const isAdminApi = ADMIN_API.includes(pathname); // <-- exact match
     if (isAdminApi && !decoded.isAdmin) {
       return NextResponse.json({ message: "Forbidden" }, { status: 403 });
     }
   }
+  
 
   /** -----------------------------------------------------
    * 4) Admin-ONLY PAGES (Magic Link Admin)

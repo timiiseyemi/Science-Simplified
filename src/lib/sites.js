@@ -989,7 +989,7 @@ export const sites = {
       about_supporter1Height: 300,
       about_supporter1Link: "https://www.hs-foundation.org/",
 
-      about_supporter2Logo: "HS_foundation_logo.webp",
+      about_supporter2Logo: "hsfoundationlogo.png",
       about_supporter2Name: "HS Foundation",
       about_supporter2Width: 300,
       about_supporter2Height: 300,

@@ -1,11 +1,7 @@
 // Navigation bar
 .navbar {
     font-family: var(--font-onest);
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
 }
-
 header {
     width: 100%;
     z-index: 1000;
@@ -24,8 +20,8 @@ header {
 }
 
 .header-content {
-    width: 85%;
-    margin: 0 auto 0 2rem;
+    width: 85%; /* ⬅️ reduces container width so content sits closer to left */
+    margin: 0 auto 0 2rem; /* ⬅️ moves navbar slightly left */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -50,11 +46,15 @@ header {
     text-decoration: none;
     transition: all 0.1s;
     text-transform: capitalize;
+
+    /* P */
     color: rgba(11, 22, 24, 0.8);
     font-family: var(--font-outfit);
     font-size: 40px;
+    font-style: normal;
     font-weight: 400;
-    line-height: 120%;
+    line-height: 120%; /* 24px */
+
     letter-spacing: -0.32px;
 
     &:hover {
@@ -70,20 +70,22 @@ header {
     width: 100vw;
     height: 100vh;
     background-color: #0e0e0e;
+
     position: fixed;
     top: 0;
     left: 0;
     z-index: 1000;
     display: none;
 }
-
 .header-mob-head {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
-    padding: 2rem 0;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
     background-color: #fff;
 
     .close-icon {
@@ -94,12 +96,14 @@ header {
 
 .header-mob-body {
     width: 100%;
-    height: 100svh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
     gap: 2rem;
     padding-top: 6vh;
+    height: 100svh;
 }
 
 .header-mob-body a {
@@ -107,8 +111,15 @@ header {
     text-decoration: none;
     text-transform: uppercase;
     padding: 1.5rem;
+
     font-size: 3rem;
+    font-style: normal;
     font-weight: 600;
+    line-height: normal;
+
+    // &:not(:last-child) {
+    //     border-bottom: 1px solid #fff;
+    // }
 }
 
 @media screen and (max-width: 1600px) {
@@ -122,6 +133,9 @@ header {
     .header-content {
         width: 100%;
     }
+    .product-box {
+        padding: 2.5rem;
+    }
 }
 
 @media screen and (max-width: 1400px) {
@@ -129,7 +143,10 @@ header {
         padding: 0 !important;
     }
 
-    .header-right,
+    .header-right {
+        display: none;
+    }
+
     .header-left {
         display: none;
     }
@@ -144,19 +161,29 @@ header {
             color: #4cb19f;
         }
     }
+
+    .header-mob-head-right {
+        display: flex;
+        gap: 3rem;
+    }
 }
 
 @media screen and (max-width: 600px) {
-    .navbrand {
-        max-width: 10rem;
+    .navbrand img {
+        width: 5rem;
     }
 
     .header-right-mob {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .header-mob-head-right {
+        display: flex;
         gap: 1rem;
     }
 }
-
-/* ==== ACTIVE NAVBAR STYLES ==== */
 
 .navbar {
     position: relative;
@@ -166,7 +193,6 @@ header {
 
     &.hs-mode {
         background: linear-gradient(90deg, #f6c441, #e0509c, #7b2cbf);
-
         .nav-links > li > a,
         .dropdown > span {
             color: #fff;
@@ -178,7 +204,9 @@ header {
         align-items: center;
         justify-content: space-between;
         gap: 1.5rem;
-        padding: 2rem 2rem; // ✅ RESTORED DESKTOP SPACING
+
+        padding-top: 2rem;
+        padding-bottom: 2rem;
     }
 
     .nav-links {
@@ -186,8 +214,72 @@ header {
         align-items: center;
         gap: 2.75rem;
         list-style: none;
-        font-size: 1.8rem;
+
+        font-size: 1.8rem; //   top ones
         padding-right: 8rem;
+
+        li {
+            position: relative;
+            font-weight: 500;
+
+            a,
+            span {
+                color: #333;
+                text-decoration: none;
+                cursor: pointer;
+                transition: color 0.2s;
+            }
+
+            &:hover > a,
+            &:hover > span {
+                color: var(--accent-color, #7b2cbf);
+            }
+
+            &.dropdown {
+                &:hover .dropdown-menu {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0);
+                }
+
+                .dropdown-menu {
+                    position: absolute;
+                    top: 2.2rem;
+                    left: 0;
+                    background: #fff;
+                    border-radius: 10px;
+                    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+                    padding: 0.5rem 0;
+                    list-style: none;
+                    min-width: 200px;
+                    opacity: 0;
+                    visibility: hidden;
+                    transform: translateY(10px);
+                    transition: all 0.25s ease;
+
+                    li {
+                        a,
+                        button {
+                            display: block;
+                            width: 100%;
+                            padding: 0.85rem 1.2rem;
+                            text-align: left;
+                            color: #444;
+
+                            font-size: 1.7rem; // dropdown ones
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+
+                            &:hover {
+                                background: rgba(123, 44, 191, 0.07);
+                                color: #7b2cbf;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     .auth-buttons {
@@ -198,7 +290,6 @@ header {
     .mobile-toggle {
         display: none;
         cursor: pointer;
-        flex-shrink: 0;
     }
 
     .mobile-menu {
@@ -217,27 +308,40 @@ header {
     }
 
     @media (max-width: 768px) {
-        .navbar-inner {
-            padding: 2rem 1rem; // ✅ MOBILE ONLY
-        }
-
         .nav-links {
             display: none;
-            padding-right: 0;
         }
-
-        .auth-buttons {
-            gap: 0.4rem;
-            margin-right: -0.5rem;
-        }
-
         .mobile-toggle {
             display: block;
-            padding-right: 0.25rem;
         }
-
         .mobile-menu {
             display: flex;
         }
+    }
+}
+/* ===== MOBILE HEADER ALIGNMENT FIX (RIGHT SPACE ISSUE) ===== */
+@media screen and (max-width: 768px) {
+    .header-content {
+        width: 100%;          /* use full width */
+        margin-left: 0;       /* remove forced right shift */
+        padding-right: 0.75rem;
+        padding-left: 1rem;
+    }
+
+    .header-right-mob {
+        gap: 0.6rem;          /* tighter spacing */
+    }
+
+    .header-right-mob a {
+        font-size: 1.3rem;    /* smaller Login text */
+    }
+
+    .header-right-mob button {
+        font-size: 1.3rem;    /* smaller Sign Up */
+        padding: 0.4rem 0.75rem;
+    }
+
+    .icon-menu {
+        font-size: 3.2rem;    /* slightly smaller hamburger */
     }
 }

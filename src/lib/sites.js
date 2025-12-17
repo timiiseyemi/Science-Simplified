@@ -952,7 +952,7 @@ export const sites = {
       homeBG: "birdsofparadiselogo.jpg", //home/homeBG
       homeExploreAllBG: "Vitiligo_ExploreAllBG.png", //home/homeExploreAllBG
       // Images (General)
-      logoWithText: "hssimplified_nobg.png", //logoWithText
+      logoWithText: "HSSimplifiedLogo.png", //logoWithText
       articleThumbnailPlaceholder: "ArticlePlaceholderBirdOfParadise.png", //articleThumbnailPlaceholder
       contactUsBGLeft: "HS_contactUsBGLeft.jpg", //contactUsBGLeft # uses full width background
       contactUsBGRight: "HS_contactUsBGLeft.jpg", //contactUsBGRight # uses full width background

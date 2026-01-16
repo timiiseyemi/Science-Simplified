@@ -21,14 +21,17 @@ Do NOT define neurofibromatosis, schwannomatosis, hidradenitis, or epidermolysis
 `;
 
 const TENANT_CONFIG = {
+
   HS: {
     required: ["hidradenitis suppurativa", "hidradenitis"],
     exclude: ["mood", "parkinson", "glioblastoma"],
   },
+
   NF: {
     required: ["neurofibromatosis", "nf1", "nf2", "schwannomatosis"],
     exclude: [],
   },
+  
   EB: {
     required: ["epidermolysis bullosa"],
     exclude: [],

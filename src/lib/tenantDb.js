@@ -1,21 +1,23 @@
-import dotenv from "dotenv";
-import path from "path";
 import { Pool } from "pg";
+import path from "path";
 
 const pools = {};
 
 export function getTenantPool(tenant) {
-  if (pools[tenant]) return pools[tenant];
+  if (pools[tenant]) {
+    return pools[tenant];
+  }
 
-  // ✅ LOAD TENANT-SPECIFIC ENV
-  dotenv.config({
-    path: path.join(process.cwd(), `.env.${tenant}`),
-    override: true,
-  });
+  // // Load tenant-specific env file
+  // dotenv.config({
+  //   path: path.join(process.cwd(), `.env.${tenant}`),
+  //   override: true, // <--- THIS IS WHAT MAKES ENV SWITCH
+  // });
 
+  // console.log(`🔄 Loaded env for tenant: ${tenant}`);
   console.log("→ Using DB:", {
-    tenant,
     host: process.env.PGHOST,
+    user: process.env.PGUSER,
     db: process.env.PGDATABASE,
   });
 
@@ -24,8 +26,11 @@ export function getTenantPool(tenant) {
     host: process.env.PGHOST,
     database: process.env.PGDATABASE,
     password: process.env.PGPASSWORD,
-    port: Number(process.env.PGPORT || 5432),
-    ssl: { rejectUnauthorized: false },
+    port: parseInt(process.env.PGPORT || "5432"),
+    ssl: {
+      rejectUnauthorized: false,
+      require: true,
+    },
   });
 
   pools[tenant] = pool;
@@ -33,5 +38,6 @@ export function getTenantPool(tenant) {
 }
 
 export async function tenantQuery(tenant, text, params) {
-  return getTenantPool(tenant).query(text, params);
+  const pool = getTenantPool(tenant);
+  return pool.query(text, params);
 }

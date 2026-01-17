@@ -1,4 +1,6 @@
-// src/lib/neon.js
 import { neon } from "@neondatabase/serverless";
 
-export const sql = neon(process.env.DATABASE_URL);
+const connectionString = process.env.DATABASE_URL || 
+  `postgresql://${process.env.PGUSER}:${process.env.PGPASSWORD}@${process.env.PGHOST}:${process.env.PGPORT || 5432}/${process.env.PGDATABASE}?sslmode=require`;
+
+export const sql = neon(connectionString);

@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
 import { Unplug } from "lucide-react";
 import { ArticleCardSkeleton } from "@/components/ArticleCardSkeleton/ArticleCardSkeleton";
-import SearchClinical from "@/components/SearchClinical/searchclinical";
+import SearchClinical from "@/components/SearchClinical/SearchClinical";
 import TrialsListPaginated from "@/components/TrialsListPaginated/TrialsListPaginated";
 import useSearchStore from "@/store/useSearchStore";
 import "./ClinicalTrialsPage.scss";

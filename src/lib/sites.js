@@ -1129,25 +1129,25 @@ export const sites = {
       about_teamMember1Bio:  "Committed to building a user-friendly platform to help researchers share clear, accurate summaries with the RUNX1-FPD community.",
 
       about_teamMember2Image: "expert-placeholder.png",
-      about_teamMember2Name: "Medical Outreach Lead",
-      about_teamMember2Title: "Medical Outreach Lead",
+      about_teamMember2Name: "Expert Advisor Placeholder",
+      about_teamMember2Title: "Expert Advisor Placeholder",
       about_teamMember2Bio: "Placeholder Bio",
 
-      about_teamMember3Image: "expert-placeholder.png",
+      about_teamMember3Image: "katrine.jpeg",
       about_teamMember3Name: "Katrin Ericson",
       about_teamMember3Title: "Faculty Advisor",
-      about_teamMember3Bio: "Faculty Advisor from the RUNX1 Research Program.",
+      about_teamMember3Bio: "Dr. Katrin Ericson has served as Executive Director of Runx1 Research Program since 2018, leading the organization’s overall strategy and research programs while drawing on extensive experience across academia, nonprofit science funding, and the biopharmaceutical industry.",
 
-      about_supporter1Logo: "runx1-rp-logo.png",
+      about_supporter1Logo: "runx1RP.webp",
       about_supporter1Name: "RUNX1 Research Program",
       about_supporter1Width: 400,
-      about_supporter1Height: 200,
+      about_supporter1Height: 400,
       about_supporter1Link: "https://www.runx1-fpd.org/",
 
       about_supporter2Logo: "runx1-rp-logo.png",
       about_supporter2Name: "RUNX1 Research Program",
       about_supporter2Width: 400,
-      about_supporter2Height: 200,
+      about_supporter2Height: 400,
       about_supporter2Link: "https://www.runx1-fpd.org/",
       about_supporter2Hidden: true,
 

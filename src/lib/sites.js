@@ -1100,7 +1100,7 @@ export const sites = {
         lightGrey: "#f5f5f5",
         text: "#000000",             // black text
         background: "#FFFFFF",       // white background
-        contactUsColor: "#FF0000",   // red accent
+        contactUsColor: "#701616",   // red accent
         authorTextColor: "#666666",  // gray for secondary text
         footerBGColor: "#151611",    // dark/black footer
       },

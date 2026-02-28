@@ -1095,8 +1095,8 @@ export const sites = {
       domain: "https://ssrunx1.vercel.app",
 
       theme: { // Theme - Red/Black/White (based on runx1-fpd.org branding)
-        primary: "#FF0000",          // bright red (main branding color)
-        primaryDark: "#CC0000",      // darker red
+        primary: "#701616",          // bright red (main branding color)
+        primaryDark: "#701616",      // darker red
         lightGrey: "#f5f5f5",
         text: "#000000",             // black text
         background: "#FFFFFF",       // white background

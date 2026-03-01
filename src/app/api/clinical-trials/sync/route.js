@@ -36,6 +36,11 @@ const TENANT_CONFIG = {
     required: ["cystic fibrosis"],
     exclude: [],
   },
+  RUNX1: {
+    required: ["runx1"],
+    exclude: [],
+  },
+
 };
 
 const WEEK_MS = 7 * 24 * 60 * 60 * 1000;

@@ -29,7 +29,7 @@ const ReviewAssignedArticle = ({ params }) => {
     const fetchArticle = async () => {
         setIsLoading(true);
         try {
-            const response = await fetch(`/api/articles/${id}`);
+            const response = await fetch(`/api/articles/pending/${id}`);
             if (!response.ok) throw new Error("Failed to fetch article");
             const data = await response.json();
             setArticle(data);

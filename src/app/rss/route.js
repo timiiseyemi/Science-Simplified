@@ -21,7 +21,7 @@ export async function GET() {
     try {
         const result = await query(`
             SELECT a.id, a.title, a.summary, a.authors,
-                   a.publication_date, a.created_at, a.image_url, a.article_link
+                   a.publication_date, a.image_url, a.article_link
             FROM article a
             ORDER BY a.id DESC
         `);
@@ -43,7 +43,7 @@ export async function GET() {
         const items = articles
             .map((a) => {
                 const link = `${domain}/articles/${a.id}`;
-                const pubDate = a.publication_date || a.created_at;
+                const pubDate = a.publication_date;
                 const dateStr = pubDate
                     ? new Date(pubDate).toUTCString()
                     : buildDate;

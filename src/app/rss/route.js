@@ -20,7 +20,7 @@ function escapeXml(str) {
 export async function GET() {
     try {
         const result = await query(`
-            SELECT a.id, a.title, a.summary, a.authors,
+            SELECT a.id, a.title, a.summary, a.innertext, a.authors,
                    a.publication_date, a.image_url, a.article_link
             FROM article a
             ORDER BY a.id DESC
@@ -53,6 +53,10 @@ export async function GET() {
       <link>${escapeXml(link)}</link>
       <guid isPermaLink="true">${escapeXml(link)}</guid>
       <description>${escapeXml(a.summary)}</description>${
+                    a.innertext
+                        ? `\n      <content:encoded><![CDATA[${a.innertext}]]></content:encoded>`
+                        : ""
+                }${
                     a.authors
                         ? `\n      <author>${escapeXml(a.authors)}</author>`
                         : ""
@@ -63,7 +67,7 @@ export async function GET() {
             .join("\n");
 
         const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>${feedTitle}</title>
     <link>${escapeXml(domain)}</link>

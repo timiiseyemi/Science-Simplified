@@ -60,6 +60,10 @@ export async function GET() {
                     a.authors
                         ? `\n      <author>${escapeXml(a.authors)}</author>`
                         : ""
+                }${
+                    a.image_url
+                        ? `\n      <enclosure url="${escapeXml(a.image_url)}" type="image/jpeg" length="0"/>`
+                        : ""
                 }
       <pubDate>${dateStr}</pubDate>
     </item>`;

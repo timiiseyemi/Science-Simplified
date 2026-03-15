@@ -163,19 +163,17 @@ export default function Navbar() {
             {/* Mobile dropdown fallback */}
             {navbarOpen && (
                 <div className="mobile-menu">
-                    {["Home", "Articles", "Clinical Trials", "About", "Contact Us"].map((name) => (
-                        <Link
-                            key={name}
-                            href={`/${
-                                name === "Home"
-                                    ? ""
-                                    : name.toLowerCase().replace(" ", "-")
-                            }`}
-                            onClick={toggleNavbar}
-                        >
-                            {name}
-                        </Link>
-                    ))}
+                    {[
+  { name: "Home", href: "/" },
+  { name: "Articles", href: "/articles" },
+  { name: "Clinical Trials", href: "/clinical-trials" },
+  { name: "About", href: "/about" },
+  { name: "Contact Us", href: "/contact" },
+].map((item) => (
+  <Link key={item.name} href={item.href} onClick={toggleNavbar}>
+    {item.name}
+  </Link>
+))}
                     {user ? (
                         <button
                             onClick={logout}

@@ -6,20 +6,14 @@
 .draggable-carousel {
     display: flex;
     gap: 2rem;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
     cursor: grab;
     padding: 1rem 0 2rem;
-
-    scrollbar-width: none;
-    &::-webkit-scrollbar {
-        display: none;
-    }
+    -webkit-overflow-scrolling: touch;
+    user-select: none;
 
     &--grabbing {
         cursor: grabbing;
-        scroll-snap-type: none;
 
         * {
             pointer-events: none;
@@ -27,7 +21,6 @@
     }
 
     > * {
-        scroll-snap-align: start;
         flex-shrink: 0;
     }
 }

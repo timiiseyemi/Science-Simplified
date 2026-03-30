@@ -244,78 +244,78 @@ export default async function AboutPage() {
                             {tenant.about_contributorsDescription}
                         </p>
                         <div className={`${aboutPageClass}__experts-container`}>
+                            {experts.length > 0 ? (
                             <DraggableCarousel
                                 className={`${aboutPageClass}__experts-marquee`}
                             >
-                                {experts.length > 0 ? (
-                                    experts.map((expert) => (
+                                {experts.map((expert) => (
+                                    <div
+                                        key={expert.id}
+                                        className={`${aboutPageClass}__expert`}
+                                    >
                                         <div
-                                            key={expert.id}
-                                            className={`${aboutPageClass}__expert`}
+                                            className={`${aboutPageClass}__expert-photo`}
                                         >
-                                            <div
-                                                className={`${aboutPageClass}__expert-photo`}
-                                            >
-                                                {expert.image ===
-                                                expertPlaceholder ? (
-                                                    <div
-                                                        className={`${aboutPageClass}__expert-initial`}
-                                                        style={{
-                                                            width: "120px",
-                                                            height: "120px",
-                                                            display: "flex",
-                                                            alignItems:
-                                                                "center",
-                                                            justifyContent:
-                                                                "center",
-                                                            backgroundColor:
-                                                                "#e0e0e0",
-                                                            borderRadius: "50%",
-                                                            fontSize: "48px",
-                                                            fontWeight: "bold",
-                                                            color: "#333",
-                                                        }}
-                                                    >
-                                                        {getInitial(
-                                                            expert.name
-                                                        )}
-                                                    </div>
-                                                ) : (
-                                                    <Image
-                                                        src={expert.image}
-                                                        alt={expert.name}
-                                                        width={120}
-                                                        height={120}
-                                                        className={`${aboutPageClass}__expert-image`}
-                                                    />
-                                                )}
-                                            </div>
-                                            <div
-                                                className={`${aboutPageClass}__expert-info`}
-                                            >
-                                                <h4
-                                                    className={`${aboutPageClass}__expert-name`}
+                                            {expert.image ===
+                                            expertPlaceholder ? (
+                                                <div
+                                                    className={`${aboutPageClass}__expert-initial`}
+                                                    style={{
+                                                        width: "120px",
+                                                        height: "120px",
+                                                        display: "flex",
+                                                        alignItems:
+                                                            "center",
+                                                        justifyContent:
+                                                            "center",
+                                                        backgroundColor:
+                                                            "#e0e0e0",
+                                                        borderRadius: "50%",
+                                                        fontSize: "48px",
+                                                        fontWeight: "bold",
+                                                        color: "#333",
+                                                    }}
                                                 >
-                                                    {expert.name}
-                                                </h4>
-                                                <p
-                                                    className={`${aboutPageClass}__expert-title`}
-                                                >
-                                                    {expert.title}
-                                                    {expert.degree !== "N/A"
-                                                        ? `, ${expert.degree}`
-                                                        : ""}
-                                                    {expert.university !== "N/A"
-                                                        ? `, ${expert.university}`
-                                                        : ""}
-                                                </p>
-                                            </div>
+                                                    {getInitial(
+                                                        expert.name
+                                                    )}
+                                                </div>
+                                            ) : (
+                                                <Image
+                                                    src={expert.image}
+                                                    alt={expert.name}
+                                                    width={120}
+                                                    height={120}
+                                                    className={`${aboutPageClass}__expert-image`}
+                                                />
+                                            )}
                                         </div>
-                                    ))
-                                ) : (
-                                    <p>No editors available at this time.</p>
-                                )}
+                                        <div
+                                            className={`${aboutPageClass}__expert-info`}
+                                        >
+                                            <h4
+                                                className={`${aboutPageClass}__expert-name`}
+                                            >
+                                                {expert.name}
+                                            </h4>
+                                            <p
+                                                className={`${aboutPageClass}__expert-title`}
+                                            >
+                                                {expert.title}
+                                                {expert.degree !== "N/A"
+                                                    ? `, ${expert.degree}`
+                                                    : ""}
+                                                {expert.university !== "N/A"
+                                                    ? `, ${expert.university}`
+                                                    : ""}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))}
                             </DraggableCarousel>
+                            ) : (
+                                <p>No editors available at this time.</p>
+                            )}
                         </div>
                     </section>
 

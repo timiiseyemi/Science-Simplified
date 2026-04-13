@@ -5,7 +5,8 @@ import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 import SectionLoader from "@/components/SectionLoader/SectionLoader";
 import { Button } from "@/components/ui/button";
-import { Heart, Loader2, ChevronDown, ExternalLink, Pencil, Trash2, AlertTriangle, Globe } from "lucide-react";
+import { Heart, Loader2, ChevronDown, ExternalLink, Pencil, Trash2, AlertTriangle, Globe, Volume2 } from "lucide-react";
+import AudioPlayer from "@/components/AudioPlayer/AudioPlayer";
 import Image from "next/image";
 import Link from "next/link";
 import { toast, ToastContainer } from "react-toastify";
@@ -34,6 +35,9 @@ const ArticlePage = ({ params }) => {
     const [selectedLanguage, setSelectedLanguage] = useState(null);
     const [translation, setTranslation] = useState(null);
     const [translating, setTranslating] = useState(false);
+
+    // Audio regeneration state
+    const [regeneratingAudio, setRegeneratingAudio] = useState(false);
 
     // Scroll progress
     const [scrollProgress, setScrollProgress] = useState(0);
@@ -164,6 +168,24 @@ const ArticlePage = ({ params }) => {
             toast.error("Failed to load translation. Please try again.");
         } finally {
             setTranslating(false);
+        }
+    };
+
+    const handleRegenerateAudio = async () => {
+        setRegeneratingAudio(true);
+        try {
+            const res = await fetch(`/api/articles/${id}/audio`, { method: "POST" });
+            const data = await res.json();
+            if (data.success) {
+                setArticle((prev) => ({ ...prev, audio_url: data.audioUrl }));
+                toast.success("Audio regenerated!");
+            } else {
+                toast.error(data.message || "Failed to regenerate audio");
+            }
+        } catch (e) {
+            toast.error("Failed to regenerate audio");
+        } finally {
+            setRegeneratingAudio(false);
         }
     };
 
@@ -366,6 +388,14 @@ const ArticlePage = ({ params }) => {
                                 </div>
                             </div>
 
+                            {/* Audio Player */}
+                            {article.audio_url && (
+                                <AudioPlayer
+                                    audioUrl={article.audio_url}
+                                    title={article.title}
+                                />
+                            )}
+
                             {/* Translation warning banner */}
                             {selectedLanguage && translation && (
                                 <div className="article-page__translation-warning">
@@ -485,6 +515,24 @@ const ArticlePage = ({ params }) => {
                                             <Pencil className="w-7 h-7" />
                                             Edit Article
                                         </Link>
+                                        <Button
+                                            type="button"
+                                            className="btn btn-primary"
+                                            onClick={handleRegenerateAudio}
+                                            disabled={regeneratingAudio}
+                                        >
+                                            {regeneratingAudio ? (
+                                                <>
+                                                    <Loader2 className="mr-2 h-8 w-8 animate-spin" />
+                                                    Generating...
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <Volume2 className="w-7 h-7" />
+                                                    {article.audio_url ? "Regenerate Audio" : "Generate Audio"}
+                                                </>
+                                            )}
+                                        </Button>
                                         <Button
                                             type="button"
                                             className="btn btn-primary-red"

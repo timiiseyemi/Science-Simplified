@@ -1,6 +1,7 @@
 import { query } from "@/lib/db";
 import { NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/adminGuard";
+import { generateArticleAudio } from "@/lib/tts";
 
 
 // Only allow POST method
@@ -28,10 +29,11 @@ export async function POST(req) {
 
         // Insert the article into the article table, including the certifiedby, image_url, and publication_date fields
         // Insert the article into the article table, now including authors
-        await query(
+        const insertResult = await query(
             `INSERT INTO article
             (title, tags, innertext, summary, article_link, publisher, authors, certifiedby, image_url, publication_date, source_publication, image_credit, additional_editors)
-            VALUES ($1, $2, $3, $4, $5, $6, $7::text[], $8::jsonb, $9, $10, $11, $12, $13)`,
+            VALUES ($1, $2, $3, $4, $5, $6, $7::text[], $8::jsonb, $9, $10, $11, $12, $13)
+            RETURNING id`,
             [
                 article.title,
                 article.tags,
@@ -50,8 +52,15 @@ export async function POST(req) {
         );
         
 
+        const newArticleId = insertResult.rows[0].id;
+
         // Delete the article from the pending_article table
         await query("DELETE FROM pending_article WHERE id = $1", [id]);
+
+        // Fire-and-forget TTS generation (don't block publish response)
+        generateArticleAudio(newArticleId, article.title, article.innertext)
+            .then(() => console.log(`TTS generated for article ${newArticleId}`))
+            .catch((err) => console.error(`TTS failed for article ${newArticleId}:`, err));
 
         return NextResponse.json({
             success: true,

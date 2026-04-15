@@ -127,8 +127,7 @@ const ClinicalTrialsPage = () => {
               Summaries of currently recruiting clinical trials
             </p>
             <p className="clinical-trials-page__disclaimer">
-              ⚠️ These summaries have not yet been verified by an expert on our team.
-              Always consult with your healthcare provider before considering participation in any clinical trial.
+              ⚠️ These summaries have not yet been verified by a researcher on the original study team.
             </p>
           </div>
 

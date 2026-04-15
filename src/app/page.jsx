@@ -58,6 +58,13 @@ function HomeContent() {
             "--hero-illustration",
             bgImage
         );
+        // Set dark-bg accent color for tenants with dark hero backgrounds
+        if (tenant.theme?.darkBgAccent) {
+            document.documentElement.style.setProperty(
+                "--color-dark-bg-accent",
+                tenant.theme.darkBgAccent
+            );
+        }
     }, []);
 
     return (

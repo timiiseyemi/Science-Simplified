@@ -239,6 +239,33 @@ header {
         }
     }
 
+    &.scleroderma-mode {
+        background: #002952; // SRF Dark Blue
+        .nav-links > li > a,
+        .dropdown > span {
+            color: #fff;
+        }
+        .nav-links > li:hover > a,
+        .nav-links > li:hover > span {
+            color: #F5853F; // SRF Orange on hover
+        }
+        .nav-links > li > a.active {
+            color: #F5853F;
+        }
+        .auth-buttons .btn {
+            color: #fff;
+            border-color: #fff;
+        }
+        .auth-buttons .btn-primary {
+            background: #F5853F; // SRF Orange
+            border-color: #F5853F;
+            color: #fff;
+        }
+        .mobile-toggle {
+            color: #fff;
+        }
+    }
+
     .navbar-inner {
         display: flex;
         align-items: center;
@@ -366,6 +393,16 @@ header {
 
     &.runx1-mode .mobile-menu {
         background: #000;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+        a,
+        button {
+            color: #fff;
+        }
+    }
+
+    &.scleroderma-mode .mobile-menu {
+        background: #002952;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
 
         a,

@@ -1191,9 +1191,10 @@ export const sites = {
         authorTextColor: "#004990",    // SRF Blue for author text
         footerBGColor: "#002952",      // SRF Dark Blue footer
         pillTextColor: "#EBF5FF",      // SRF Blue Tint for tag pills
+        darkBgAccent: "#FEC916",       // SRF Yellow — bright accent on dark hero
       },
       // Images (Home)
-      homeBG: "sclerodermabanner.jpg",
+      homeBG: "sclerodermabanner2.jpg",
       homeBG_full: true,
       homeExploreAllBG: "scleroderma_explore_all.jpg",
       // Images (General)

@@ -5,6 +5,8 @@ export async function GET() {
   try {
     const tenant = process.env.NEXT_PUBLIC_SITE_KEY;
 
+    console.log("[ACTIVE TRIALS] tenant:", tenant, "PGHOST:", process.env.PGHOST?.slice(0, 20));
+
     if (!tenant) {
       return NextResponse.json(
         { success: false, error: "Missing site tenant" },

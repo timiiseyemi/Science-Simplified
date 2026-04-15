@@ -48,8 +48,13 @@ const ClinicalTrialsPage = () => {
       try {
         const res = await fetch(`/api/clinical-trials/active`);
         const data = await res.json();
+        console.log("[Clinical Trials] API response:", { success: data.success, trialCount: data.trials?.length, error: data.error });
+        if (!data.success && data.error) {
+          console.error("[Clinical Trials] API error:", data.error);
+        }
         setTrials(data.trials || []);
-      } catch {
+      } catch (err) {
+        console.error("[Clinical Trials] Fetch failed:", err);
         setError(true);
       } finally {
         setLoading(false);

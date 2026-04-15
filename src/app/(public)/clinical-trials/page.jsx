@@ -30,7 +30,7 @@ const CONTINENT_MAP = {
   australia: "australia",
 };
 
-const TENANT = process.env.NEXT_PUBLIC_TENANT;
+import { tenant } from "@/lib/config";
 
 const ClinicalTrialsPage = () => {
   const { searchQuery } = useSearchStore();
@@ -46,7 +46,7 @@ const ClinicalTrialsPage = () => {
   useEffect(() => {
     const fetchTrials = async () => {
       try {
-        const res = await fetch(`/api/clinical-trials/active?tenant=${TENANT}`);
+        const res = await fetch(`/api/clinical-trials/active`);
         const data = await res.json();
         setTrials(data.trials || []);
       } catch {

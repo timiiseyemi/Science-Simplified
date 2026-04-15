@@ -240,21 +240,21 @@ header {
     }
 
     &.scleroderma-mode {
-        background: #002952; // SRF Dark Blue
+        background: #FFFFFF;
         .nav-links > li > a,
         .dropdown > span {
-            color: #fff;
+            color: #333333;
         }
         .nav-links > li:hover > a,
         .nav-links > li:hover > span {
-            color: #F5853F; // SRF Orange on hover
+            color: #004990; // SRF Blue on hover
         }
         .nav-links > li > a.active {
-            color: #F5853F;
+            color: #004990;
         }
         .auth-buttons .btn {
-            color: #fff;
-            border-color: #fff;
+            color: #333333;
+            border-color: #333333;
         }
         .auth-buttons .btn-primary {
             background: #F5853F; // SRF Orange
@@ -262,7 +262,7 @@ header {
             color: #fff;
         }
         .mobile-toggle {
-            color: #fff;
+            color: #333333;
         }
     }
 
@@ -402,12 +402,12 @@ header {
     }
 
     &.scleroderma-mode .mobile-menu {
-        background: #002952;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        background: #fff;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
 
         a,
         button {
-            color: #fff;
+            color: #333333;
         }
     }
 

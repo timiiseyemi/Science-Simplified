@@ -9,7 +9,7 @@ function HomeServiceBanner() {
     }, []);
 
     return (
-        <div className={`service-banner ${tenant.shortName === "HS" || tenant.shortName === "CF" || tenant.shortName === "Vitiligo" || tenant.shortName === "Canavan" || tenant.shortName === "Progeria" || tenant.shortName === "Huntington's" || tenant.shortName === "Rett" || tenant.shortName === "RYR1" || tenant.shortName === "ALS" || tenant.shortName === "NF" || tenant.shortName === "Asherman's" || tenant.shortName === "Aicardi" || tenant.shortName === "TS" || tenant.shortName === "RUNX1" ? "background-alt" : ""}`}>
+        <div className={`service-banner ${tenant.shortName === "HS" || tenant.shortName === "CF" || tenant.shortName === "Vitiligo" || tenant.shortName === "Canavan" || tenant.shortName === "Progeria" || tenant.shortName === "Huntington's" || tenant.shortName === "Rett" || tenant.shortName === "RYR1" || tenant.shortName === "ALS" || tenant.shortName === "NF" || tenant.shortName === "Asherman's" || tenant.shortName === "Aicardi" || tenant.shortName === "TS" || tenant.shortName === "RUNX1" || tenant.shortName === "Scleroderma" ? "background-alt" : ""}`}>
             <div className="service-banner__content">
                 <h2 className={`heading-quaternary ${tenant.shortName === "ALS" ? "invisible" : ""}`}>
                     {tenant.text_exploreAllTitle}{" "}
@@ -18,7 +18,7 @@ function HomeServiceBanner() {
                     {tenant.text_exploreAllDescription}
                 </p>
             </div>
-            <Link href="/articles" className="btn btn-primary-white">
+            <Link href="/articles" className={`btn ${tenant.shortName === "Scleroderma" ? "btn-scleroderma-orange" : "btn-primary-white"}`}>
                 Explore All
             </Link>
         </div>

@@ -5,6 +5,8 @@ export async function GET() {
   try {
     const tenant = process.env.NEXT_PUBLIC_SITE_KEY;
 
+    console.log("[ACTIVE TRIALS] tenant:", tenant, "PGHOST:", process.env.PGHOST?.slice(0, 20));
+
     if (!tenant) {
       return NextResponse.json(
         { success: false, error: "Missing site tenant" },
@@ -41,7 +43,7 @@ export async function GET() {
 
       FROM clinical_trials
       WHERE is_active = true
-        AND tenant = ${tenant}
+        AND LOWER(tenant) = LOWER(${tenant})
         AND overall_status IN ('RECRUITING', 'ENROLLING_BY_INVITATION')
 
         -- 🔒 ABSOLUTE GATES (DO NOT REMOVE)

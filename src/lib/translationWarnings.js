@@ -33,3 +33,11 @@ export const TRANSLATION_WARNINGS = {
             "This translation was automatically generated and has not been verified by a medical professional. Please refer to the original English version for accuracy.",
     },
 };
+
+export const TRANSLATION_LOADING_MESSAGES = {
+    es: "La traducción puede tardar un momento. Gracias por su paciencia.",
+    fr: "La traduction peut prendre un moment. Merci de votre patience.",
+    de: "Die Übersetzung kann einen Moment dauern. Vielen Dank für Ihre Geduld.",
+    zh: "翻译可能需要一点时间，感谢您的耐心等待。",
+    pt: "A tradução pode demorar um momento. Obrigado pela sua paciência.",
+};

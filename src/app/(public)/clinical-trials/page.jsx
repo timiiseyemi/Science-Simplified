@@ -30,7 +30,7 @@ const CONTINENT_MAP = {
   australia: "australia",
 };
 
-const TENANT = process.env.NEXT_PUBLIC_TENANT;
+import { tenant } from "@/lib/config";
 
 const ClinicalTrialsPage = () => {
   const { searchQuery } = useSearchStore();
@@ -46,10 +46,15 @@ const ClinicalTrialsPage = () => {
   useEffect(() => {
     const fetchTrials = async () => {
       try {
-        const res = await fetch(`/api/clinical-trials/active?tenant=${TENANT}`);
+        const res = await fetch(`/api/clinical-trials/active`);
         const data = await res.json();
+        console.log("[Clinical Trials] API response:", { success: data.success, trialCount: data.trials?.length, error: data.error });
+        if (!data.success && data.error) {
+          console.error("[Clinical Trials] API error:", data.error);
+        }
         setTrials(data.trials || []);
-      } catch {
+      } catch (err) {
+        console.error("[Clinical Trials] Fetch failed:", err);
         setError(true);
       } finally {
         setLoading(false);
@@ -127,8 +132,7 @@ const ClinicalTrialsPage = () => {
               Summaries of currently recruiting clinical trials
             </p>
             <p className="clinical-trials-page__disclaimer">
-              ⚠️ These summaries are AI-generated and have not been reviewed by medical experts.
-              Always consult with your healthcare provider before considering participation in any clinical trial.
+              ⚠️ These summaries have not yet been verified by a researcher on the original study team.
             </p>
           </div>
 

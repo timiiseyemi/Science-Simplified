@@ -12,12 +12,11 @@
             background-position: center center;
             background-size: cover;
             min-height: 500px;
-
             .home__hero {
                 background: none; // Remove hero's individual background
             }
 
-            // Light text for dark backgrounds (RUNX1)
+            // Light text for dark backgrounds (RUNX1, Scleroderma, etc.)
             &.dark-bg {
                 .heading-primary,
                 .heading-tertiary,
@@ -25,7 +24,7 @@
                     color: #fff;
                 }
                 .color-green {
-                    color: #701616 !important; // Red accent instead of green
+                    color: var(--color-dark-bg-accent, var(--color-primary)) !important;
                 }
             }
         }

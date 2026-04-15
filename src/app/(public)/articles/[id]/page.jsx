@@ -5,7 +5,8 @@ import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 import SectionLoader from "@/components/SectionLoader/SectionLoader";
 import { Button } from "@/components/ui/button";
-import { Heart, Loader2, ChevronDown, ExternalLink, Pencil, Trash2, AlertTriangle, Globe } from "lucide-react";
+import { Heart, Loader2, ChevronDown, ExternalLink, Pencil, Trash2, AlertTriangle, Globe, Volume2 } from "lucide-react";
+import AudioPlayer from "@/components/AudioPlayer/AudioPlayer";
 import Image from "next/image";
 import Link from "next/link";
 import { toast, ToastContainer } from "react-toastify";
@@ -13,7 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
 import useAuthStore from "@/store/useAuthStore";
 import { HeartFilledIcon } from "@radix-ui/react-icons";
-import { SUPPORTED_LANGUAGES, TRANSLATION_WARNINGS } from "@/lib/translationWarnings";
+import { SUPPORTED_LANGUAGES, TRANSLATION_WARNINGS, TRANSLATION_LOADING_MESSAGES } from "@/lib/translationWarnings";
 
 import { format } from "date-fns";
 
@@ -34,6 +35,10 @@ const ArticlePage = ({ params }) => {
     const [selectedLanguage, setSelectedLanguage] = useState(null);
     const [translation, setTranslation] = useState(null);
     const [translating, setTranslating] = useState(false);
+
+    // Audio state
+    const [regeneratingAudio, setRegeneratingAudio] = useState(false);
+    const [audioGenerating, setAudioGenerating] = useState(false);
 
     // Scroll progress
     const [scrollProgress, setScrollProgress] = useState(0);
@@ -142,6 +147,36 @@ const ArticlePage = ({ params }) => {
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
+    // Poll for audio generation status (admin only, when no audio yet)
+    useEffect(() => {
+        if (!isAdmin || !article || article.audio_url) return;
+
+        setAudioGenerating(true);
+        let attempts = 0;
+        const maxAttempts = 12; // ~60 seconds
+
+        const interval = setInterval(async () => {
+            attempts++;
+            try {
+                const res = await fetch(`/api/articles/${id}/audio`);
+                const data = await res.json();
+                if (data.audioUrl) {
+                    setArticle((prev) => ({ ...prev, audio_url: data.audioUrl }));
+                    setAudioGenerating(false);
+                    clearInterval(interval);
+                }
+            } catch (e) {
+                // ignore polling errors
+            }
+            if (attempts >= maxAttempts) {
+                setAudioGenerating(false);
+                clearInterval(interval);
+            }
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, [isAdmin, article?.id, article?.audio_url, id]);
+
     const handleTranslate = async (langCode) => {
         if (langCode === selectedLanguage) {
             // Clicking the same language again → revert to English
@@ -150,6 +185,7 @@ const ArticlePage = ({ params }) => {
             return;
         }
 
+        setSelectedLanguage(langCode);
         setTranslating(true);
         try {
             const res = await fetch(
@@ -158,12 +194,30 @@ const ArticlePage = ({ params }) => {
             if (!res.ok) throw new Error("Translation failed");
             const data = await res.json();
             setTranslation(data);
-            setSelectedLanguage(langCode);
         } catch (e) {
             console.error("Translation error:", e);
             toast.error("Failed to load translation. Please try again.");
+            setSelectedLanguage(null);
         } finally {
             setTranslating(false);
+        }
+    };
+
+    const handleRegenerateAudio = async () => {
+        setRegeneratingAudio(true);
+        try {
+            const res = await fetch(`/api/articles/${id}/audio`, { method: "POST" });
+            const data = await res.json();
+            if (data.success) {
+                setArticle((prev) => ({ ...prev, audio_url: data.audioUrl }));
+                toast.success("Audio regenerated!");
+            } else {
+                toast.error(data.message || "Failed to regenerate audio");
+            }
+        } catch (e) {
+            toast.error("Failed to regenerate audio");
+        } finally {
+            setRegeneratingAudio(false);
         }
     };
 
@@ -366,6 +420,19 @@ const ArticlePage = ({ params }) => {
                                 </div>
                             </div>
 
+                            {/* Audio Player */}
+                            {article.audio_url ? (
+                                <AudioPlayer
+                                    audioUrl={article.audio_url}
+                                    title={article.title}
+                                />
+                            ) : isAdmin && audioGenerating ? (
+                                <div className="article-page__audio-generating">
+                                    <Loader2 size={18} className="animate-spin" />
+                                    <span>Generating article audio...</span>
+                                </div>
+                            ) : null}
+
                             {/* Translation warning banner */}
                             {selectedLanguage && translation && (
                                 <div className="article-page__translation-warning">
@@ -413,7 +480,7 @@ const ArticlePage = ({ params }) => {
                             {translating ? (
                                 <div className="article-page__translating">
                                     <Loader2 className="h-12 w-12 animate-spin" />
-                                    <p>Translating article...</p>
+                                    <p>{TRANSLATION_LOADING_MESSAGES[selectedLanguage] || "The translation may take a moment. Thank you for your patience."}</p>
                                 </div>
                             ) : (
                                 <div
@@ -485,6 +552,24 @@ const ArticlePage = ({ params }) => {
                                             <Pencil className="w-7 h-7" />
                                             Edit Article
                                         </Link>
+                                        <Button
+                                            type="button"
+                                            className="btn btn-primary"
+                                            onClick={handleRegenerateAudio}
+                                            disabled={regeneratingAudio}
+                                        >
+                                            {regeneratingAudio ? (
+                                                <>
+                                                    <Loader2 className="mr-2 h-8 w-8 animate-spin" />
+                                                    Generating...
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <Volume2 className="w-7 h-7" />
+                                                    {article.audio_url ? "Regenerate Audio" : "Generate Audio"}
+                                                </>
+                                            )}
+                                        </Button>
                                         <Button
                                             type="button"
                                             className="btn btn-primary-red"

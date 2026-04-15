@@ -16,7 +16,7 @@ Avoid medical jargon when possible.
 Define unavoidable terms in plain language.
 Keep sentences short and conversational.
 Do NOT guarantee benefit.
-Do NOT define neurofibromatosis, schwannomatosis, hidradenitis, or epidermolysis bullosa.
+Do NOT define the primary condition being studied (e.g. neurofibromatosis, scleroderma, cystic fibrosis, etc.).
 `;
 
 const TENANT_CONFIG = {
@@ -37,10 +37,53 @@ const TENANT_CONFIG = {
     exclude: [],
   },
   RUNX1: {
-    required: ["runx1"],
+    required: ["runx1", "familial platelet disorder"],
     exclude: [],
   },
-
+  TURNERS: {
+    required: ["turner syndrome", "turners syndrome", "monosomy x"],
+    exclude: [],
+  },
+  HUNTINGTONS: {
+    required: ["huntington disease", "huntington's disease", "huntingtons"],
+    exclude: [],
+  },
+  PROGERIA: {
+    required: ["progeria", "hutchinson-gilford"],
+    exclude: [],
+  },
+  AICARDI: {
+    required: ["aicardi syndrome", "aicardi-goutieres"],
+    exclude: [],
+  },
+  ASHERMANS: {
+    required: ["asherman syndrome", "ashermans syndrome", "intrauterine adhesion", "intrauterine synechiae"],
+    exclude: [],
+  },
+  CANAVANS: {
+    required: ["canavan disease", "aspartoacylase deficiency"],
+    exclude: [],
+  },
+  RETTS: {
+    required: ["rett syndrome", "mecp2"],
+    exclude: [],
+  },
+  RYR1: {
+    required: ["ryr1", "ryanodine receptor", "malignant hyperthermia", "central core disease"],
+    exclude: [],
+  },
+  ALS: {
+    required: ["amyotrophic lateral sclerosis", "als", "motor neuron disease"],
+    exclude: ["mood", "depression", "caregiver burden"],
+  },
+  VITILIGO: {
+    required: ["vitiligo"],
+    exclude: [],
+  },
+  SCLERODERMA: {
+    required: ["scleroderma", "systemic sclerosis", "morphea"],
+    exclude: [],
+  },
 };
 
 const WEEK_MS = 7 * 24 * 60 * 60 * 1000;

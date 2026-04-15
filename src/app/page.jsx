@@ -58,6 +58,13 @@ function HomeContent() {
             "--hero-illustration",
             bgImage
         );
+        // Set dark-bg accent color for tenants with dark hero backgrounds
+        if (tenant.theme?.darkBgAccent) {
+            document.documentElement.style.setProperty(
+                "--color-dark-bg-accent",
+                tenant.theme.darkBgAccent
+            );
+        }
     }, []);
 
     return (
@@ -65,7 +72,7 @@ function HomeContent() {
             <section
                 className={`home__header ${
                     useFullWidthBg
-                        ? "fullwidth-bg"
+                        ? `fullwidth-bg${tenant.shortName === "RUNX1" || tenant.shortName === "Scleroderma" ? " dark-bg" : ""}`
                         : tenant.shortName === "HS" ||
                           tenant.shortName === "CF" ||
                           tenant.shortName === "Vitiligo" ||
@@ -78,7 +85,8 @@ function HomeContent() {
                           tenant.shortName === "Asherman's" ||
                           tenant.shortName === "Aicardi" ||
                           tenant.shortName === "TS" ||
-                          tenant.shortName === "RUNX1"
+                          tenant.shortName === "RUNX1" ||
+                          tenant.shortName === "Scleroderma"
                         ? "background-alt"
                         : ""
                 }`}
@@ -90,7 +98,11 @@ function HomeContent() {
                         <div className="home__hero__content">
                             <div className="flex flex-col gap-1 animate-stagger-1">
                                 <h1 className="heading-primary">
-                                    {tenant.disease}
+                                    {tenant.shortName === "RUNX1" ? (
+                                        <><em>RUNX1</em>-FPD</>
+                                    ) : (
+                                        tenant.disease
+                                    )}
                                 </h1>
                                 <h2 className="heading-tertiary w-400 color-green">
                                     Information Made Simple

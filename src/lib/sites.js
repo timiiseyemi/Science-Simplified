@@ -1184,13 +1184,13 @@ export const sites = {
       theme: {
         primary: "#004990",             // SRF Blue
         primaryDark: "#002952",         // SRF Dark Blue
-        lightGrey: "#E0E0E0",          // Grey for backgrounds
-        text: "#333333",               // Black font
-        background: "#FFFFFF",         // White background
-        contactUsColor: "#F5853F",     // Orange accent
+        lightGrey: "#F7F7F7",          // Light Grey (style guide)
+        text: "#333333",               // Black (style guide)
+        background: "#FFFFFF",         // White
+        contactUsColor: "#004990",     // SRF Blue for contact section
         authorTextColor: "#004990",    // SRF Blue for author text
-        footerBGColor: "#002952",      // Dark blue footer
-        signUpButtonColor: "#F5853F",  // Orange sign up button
+        footerBGColor: "#002952",      // SRF Dark Blue footer
+        pillTextColor: "#EBF5FF",      // SRF Blue Tint for tag pills
       },
       // Images (Home)
       homeBG: "sclerodermabanner.jpg",
@@ -1199,11 +1199,11 @@ export const sites = {
       // Images (General)
       logoWithText: "scleroderma_logo.png",
       articleThumbnailPlaceholder: "home/sclerodermabanner.jpg",
-      contactUsBGLeft: "scleroderma_explore_all.jpg",
-      contactUsBGRight: "scleroderma_explore_all.jpg",
+      contactUsBGLeft: "home/scleroderma_explore_all.jpg",
+      contactUsBGRight: "home/scleroderma_explore_all.jpg",
 
-      loginBGTop: "sclerodermabanner.jpg",
-      loginBGBottom: "scleroderma_explore_all.jpg",
+      loginBGTop: "home/sclerodermabanner.jpg",
+      loginBGBottom: "home/scleroderma_explore_all.jpg",
 
       //Text
       text_homeTitleDescription: "Collection of simplified Scleroderma articles certified by experts.",

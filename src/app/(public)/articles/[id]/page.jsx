@@ -14,7 +14,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
 import useAuthStore from "@/store/useAuthStore";
 import { HeartFilledIcon } from "@radix-ui/react-icons";
-import { SUPPORTED_LANGUAGES, TRANSLATION_WARNINGS } from "@/lib/translationWarnings";
+import { SUPPORTED_LANGUAGES, TRANSLATION_WARNINGS, TRANSLATION_LOADING_MESSAGES } from "@/lib/translationWarnings";
 
 import { format } from "date-fns";
 
@@ -185,6 +185,7 @@ const ArticlePage = ({ params }) => {
             return;
         }
 
+        setSelectedLanguage(langCode);
         setTranslating(true);
         try {
             const res = await fetch(
@@ -193,10 +194,10 @@ const ArticlePage = ({ params }) => {
             if (!res.ok) throw new Error("Translation failed");
             const data = await res.json();
             setTranslation(data);
-            setSelectedLanguage(langCode);
         } catch (e) {
             console.error("Translation error:", e);
             toast.error("Failed to load translation. Please try again.");
+            setSelectedLanguage(null);
         } finally {
             setTranslating(false);
         }
@@ -479,7 +480,7 @@ const ArticlePage = ({ params }) => {
                             {translating ? (
                                 <div className="article-page__translating">
                                     <Loader2 className="h-12 w-12 animate-spin" />
-                                    <p>Translating article...</p>
+                                    <p>{TRANSLATION_LOADING_MESSAGES[selectedLanguage] || "The translation may take a moment. Thank you for your patience."}</p>
                                 </div>
                             ) : (
                                 <div

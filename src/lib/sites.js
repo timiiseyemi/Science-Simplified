@@ -1194,17 +1194,17 @@ export const sites = {
         darkBgAccent: "#FEC916",       // SRF Yellow — bright accent on dark hero
       },
       // Images (Home)
-      homeBG: "sclerodermabanner2.jpg",
+      homeBG: "gradientwithouttext.png",
       homeBG_full: true,
-      homeExploreAllBG: "scleroderma_explore_all.jpg",
+      homeExploreAllBG: "bottomnotext.png",
       // Images (General)
       logoWithText: "scleroderma_logo.png",
       articleThumbnailPlaceholder: "home/sclerodermabanner.jpg",
-      contactUsBGLeft: "home/scleroderma_explore_all.jpg",
-      contactUsBGRight: "home/scleroderma_explore_all.jpg",
+      contactUsBGLeft: "home/bottomnotext.png",
+      contactUsBGRight: "home/bottomnotext.png",
 
-      loginBGTop: "home/sclerodermabanner.jpg",
-      loginBGBottom: "home/scleroderma_explore_all.jpg",
+      loginBGTop: "home/gradientwithouttext.png",
+      loginBGBottom: "home/bottomnotext.png",
 
       //Text
       text_homeTitleDescription: "Collection of simplified Scleroderma articles certified by experts.",

@@ -21,7 +21,7 @@ export async function GET(req) {
     COALESCE(ai_summary_manual, ai_summary) AS ai_summary
   FROM clinical_trials
   WHERE is_active = true
-    AND tenant = ${tenant}
+    AND LOWER(tenant) = LOWER(${tenant})
     AND (
       nct_id ILIKE ${"%" + q + "%"}
       OR COALESCE(ai_summary_manual, ai_summary) ILIKE ${"%" + q + "%"}

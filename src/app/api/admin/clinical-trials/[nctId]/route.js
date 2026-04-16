@@ -17,7 +17,7 @@ export async function GET(req, { params }) {
       SELECT *
       FROM clinical_trials
       WHERE nct_id = ${nctId}
-        AND tenant = ${tenant}
+        AND LOWER(tenant) = LOWER(${tenant})
       LIMIT 1
     `;
 
@@ -76,7 +76,7 @@ export async function PATCH(req, { params }) {
         ai_prior_research_manual  = ${body.ai_prior_research_manual ?? null},
         updated_at = NOW()
       WHERE nct_id = ${nctId}
-        AND tenant = ${tenant}
+        AND LOWER(tenant) = LOWER(${tenant})
     `;
 
     return NextResponse.json({ success: true });

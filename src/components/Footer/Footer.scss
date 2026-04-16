@@ -23,7 +23,7 @@
     }
 
     &__description {
-        color: #676767;
+        color: var(--color-footer-text, #676767);
 
         font-size: 1.8rem;
         line-height: 1.5;
@@ -61,7 +61,7 @@
     }
 
     &__links-title {
-        color: #0b1618;
+        color: var(--color-footer-text, #0b1618);
         font-size: 2rem;
         font-weight: 600;
         margin-bottom: 2.56rem;
@@ -78,7 +78,7 @@
     }
 
     &__link {
-        color: #676767;
+        color: var(--color-footer-text, #676767);
         text-decoration: none;
         font-size: 1.8rem;
         position: relative;
@@ -127,7 +127,7 @@
         }
 
         &__description {
-            color: #676767;
+            color: var(--color-footer-text, #676767);
 
             font-size: 1.6rem;
         }

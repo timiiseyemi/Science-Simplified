@@ -39,7 +39,7 @@ export async function GET(req, { params }) {
         raw_data
       FROM clinical_trials
       WHERE nct_id = ${nctId}
-        AND tenant = ${tenant}
+        AND LOWER(tenant) = LOWER(${tenant})
         AND is_active = true
       LIMIT 1
     `;

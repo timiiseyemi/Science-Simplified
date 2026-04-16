@@ -675,6 +675,7 @@ export const sites = {
       about_teamMember3Name: "Faculty Advisor Name",
       about_teamMember3Title: "Faculty Advisor",
       about_teamMember3Bio: "Placeholder Bio",
+      about_teamMember3Hidden: true,
 
       about_supporter1Logo: "HDSA.webp",
       about_supporter1Name: "Huntington's Disease Society of America",
@@ -1111,6 +1112,7 @@ export const sites = {
         authorTextColor: "#666666",  // gray for secondary text
         footerBGColor: "#151611",    // dark/black footer
           pillTextColor: "#fdf4f4ff",
+          footerTextColor: "#FFFFFF",  // White text on dark footer
       },
       // Images (Home)
       // homeBG: "RUNX1_homeBG.png", //home/homeBG
@@ -1192,6 +1194,7 @@ export const sites = {
         footerBGColor: "#002952",      // SRF Dark Blue footer
         pillTextColor: "#EBF5FF",      // SRF Blue Tint for tag pills
         darkBgAccent: "#FEC916",       // SRF Yellow — bright accent on dark hero
+        footerTextColor: "#FFFFFF",    // White text on dark blue footer
         fontFamily: "'Century Gothic', 'Segma', 'Futura', sans-serif",
       },
       // Images (Home)

@@ -14,7 +14,7 @@ export async function GET(req) {
       nct_id,
       COALESCE(short_title_manual, short_title) AS short_title
     FROM clinical_trials
-    WHERE tenant = ${tenant}
+    WHERE LOWER(tenant) = LOWER(${tenant})
       AND is_active = true
       AND overall_status IN (
         'RECRUITING',

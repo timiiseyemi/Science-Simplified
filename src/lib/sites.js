@@ -1304,7 +1304,7 @@ export const sites = {
       about_teamMember3Image: "paula.jpg",
       about_teamMember3Name: "Paula Eichenbrenner, CAE",
       about_teamMember3Title: "Executive Director, The Myositis Association",
-      about_teamMember3Bio: "Paula became Executive Director of The Myositis Association in December 2023, bringing extensive non-profit leadership experience from her prior roles as Executive Director of the Academy of Managed Care Pharmacy Foundation and the American Society for Nutrition's ASN Foundation. A Certified Association Executive (CAE) with deep fundraising and public affairs expertise, she is also the Immediate Past President of the Association Foundation Group. Her passion for patient advocacy was shaped by her role as care partner for her brother. Outside of work, she volunteers with organizations focused on veterans, behavioral health, and housing-first interventions, and enjoys reading and walking with her fiancé Iain and rescue poodle Leo.",
+      about_teamMember3Bio: "Paula became Executive Director of The Myositis Association in December 2023, bringing extensive non-profit leadership experience from her prior roles at the Academy of Managed Care Pharmacy Foundation and the American Society for Nutrition's ASN Foundation. A Certified Association Executive with deep fundraising and public affairs expertise, her passion for patient advocacy was shaped by her role as care partner for her brother.",
 
       about_supporter1Logo: "tma_logo.jpg",
       about_supporter1Name: "The Myositis Association",

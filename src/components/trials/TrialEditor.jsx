@@ -304,7 +304,7 @@ export default function TrialEditor({ nctId, tenant, mode = "admin" }) {
       <section className="trial-editor__section">
         <h2>Custom Questions</h2>
         <p className="trial-editor__hint">
-          Add your own Q&A pairs. They'll appear after the default questions in the order shown here. Drag to reorder.
+          Add your own Q&A pairs. They&apos;ll appear after the default questions in the order shown here. Drag to reorder.
         </p>
         <CustomQuestionsEditor
           questions={trial.custom_questions}

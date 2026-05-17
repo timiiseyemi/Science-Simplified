@@ -376,6 +376,7 @@ function ArticleItem({ article, isSelected, onSelect, onUnassign }) {
                 <Checkbox
                     checked={isSelected}
                     onCheckedChange={() => onSelect(article.id)}
+                    onClick={(e) => e.stopPropagation()}
                     className="mt-1 w-5 h-5"
                 />
                 <img
@@ -432,6 +433,7 @@ function EditorItem({ editor, isSelected, onSelect }) {
                 <Checkbox
                     checked={isSelected}
                     onCheckedChange={() => onSelect(editor.id)}
+                    onClick={(e) => e.stopPropagation()}
                     className="w-5 h-5"
                 />
                 {editor.image ? (

@@ -226,7 +226,9 @@
 
 <script>
 (function () {
-  var API_URL = "https://runx1simplified.org/api/embed/articles";
+  // NOTE: must point at the canonical host (with www.) — the apex returns a 307
+  // redirect, and CORS preflight requests cannot follow redirects.
+  var API_URL = "https://www.runx1simplified.org/api/embed/articles";
   var API_KEY = "YOUR_API_KEY";
   var ARTICLE_LIMIT = 100;
 

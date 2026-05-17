@@ -39,14 +39,25 @@ export async function sendMagicLinkEmail({ tenant, email, url, subject, intro })
 /**
  * Specialized email for researcher invites — adds clarifying intro text.
  */
-export async function sendResearcherInviteEmail({ tenant, email, url, inviterName, trialCount }) {
+export async function sendResearcherInviteEmail({ tenant, email, url, inviterName, trialCount = 0, articleCount = 0 }) {
     const tenantName = tenant?.name || "Simplified";
-    const subject = `You've been invited to verify ${trialCount > 0 ? `${trialCount} clinical ${trialCount === 1 ? "trial" : "trials"}` : "clinical trials"} on ${tenantName}`;
+    const total = trialCount + articleCount;
+    const subject = `You've been invited to verify content on ${tenantName}`;
+    const assignmentLines = [];
+    if (trialCount > 0) {
+        assignmentLines.push(`<strong>${trialCount}</strong> clinical ${trialCount === 1 ? "trial" : "trials"}`);
+    }
+    if (articleCount > 0) {
+        assignmentLines.push(`<strong>${articleCount}</strong> ${articleCount === 1 ? "article" : "articles"}`);
+    }
+    const assignmentSummary = assignmentLines.length > 0
+        ? `<br/><br/>You have ${assignmentLines.join(" and ")} assigned for review.`
+        : "";
     const intro = `
         ${inviterName ? `${inviterName} has invited you` : "You've been invited"} to ${tenantName}
-        as a researcher to review and verify clinical trial summaries.
+        as an expert to review and verify ${total > 0 ? "the items below" : "clinical trials and articles"}.
         Click the button below to access your dashboard.
-        ${trialCount > 0 ? `<br/><br/>You have <strong>${trialCount}</strong> ${trialCount === 1 ? "trial" : "trials"} assigned.` : ""}
+        ${assignmentSummary}
     `;
     return sendMagicLinkEmail({ tenant, email, url, subject, intro });
 }

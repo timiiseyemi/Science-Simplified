@@ -1,0 +1,349 @@
+<!--
+═══════════════════════════════════════════════════════════════════════════════
+  SQUARESPACE CODE BLOCK — RUNX1 Simplified articles embed
+═══════════════════════════════════════════════════════════════════════════════
+
+  INSTRUCTIONS:
+  1. In Squarespace, edit the page where you want the articles to appear.
+  2. Click "+ Add Block" → "More" → "Code".
+  3. Paste this entire file into the Code Block (HTML mode enabled).
+  4. (Optional) Replace YOUR_API_KEY below with your real key.
+  5. (Optional) Tweak the CSS variables at the top of the <style> block
+     to match your Squarespace theme.
+
+  REQUIRES: Squarespace Business plan or higher (for Code Blocks with HTML).
+
+  CONFIGURATION:
+  - API_URL: full URL to the RUNX1 Simplified embed endpoint
+  - API_KEY: your secret key (from EMBED_API_KEY env var on the RUNX1 deployment)
+  - ARTICLE_LIMIT: how many articles to fetch
+  - OPEN_IN_NEW_TAB: whether article links open in a new tab
+
+═══════════════════════════════════════════════════════════════════════════════
+-->
+
+<div id="ss-runx1-articles" class="ss-runx1-articles">
+  <div class="ss-runx1-loading">Loading articles…</div>
+</div>
+
+<style>
+  /* ═══════════════════════════════════════════════════════════════════════
+     Theme — tweak these to match your Squarespace site.
+     ═══════════════════════════════════════════════════════════════════════ */
+  .ss-runx1-articles {
+    --ss-card-bg: #ffffff;
+    --ss-card-border: #e5e7eb;
+    --ss-card-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    --ss-card-shadow-hover: 0 6px 18px rgba(0,0,0,0.1);
+    --ss-text: #1a1d52;          /* RUNX1 dark navy */
+    --ss-text-muted: #6b7280;
+    --ss-accent: #701616;        /* RUNX1 red */
+    --ss-radius: 12px;
+    --ss-font: inherit;          /* inherits Squarespace font */
+  }
+
+  .ss-runx1-articles {
+    font-family: var(--ss-font);
+    color: var(--ss-text);
+  }
+
+  .ss-runx1-loading,
+  .ss-runx1-error,
+  .ss-runx1-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--ss-text-muted);
+    font-size: 1rem;
+  }
+
+  .ss-runx1-error {
+    color: #b91c1c;
+  }
+
+  .ss-runx1-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .ss-runx1-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--ss-card-bg);
+    border: 1px solid var(--ss-card-border);
+    border-radius: var(--ss-radius);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: var(--ss-card-shadow);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+  }
+
+  .ss-runx1-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--ss-card-shadow-hover);
+    text-decoration: none;
+  }
+
+  .ss-runx1-card__image-wrap {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #f3f4f6;
+    overflow: hidden;
+  }
+
+  .ss-runx1-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .ss-runx1-card__body {
+    padding: 1rem 1.1rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+  }
+
+  .ss-runx1-card__date {
+    font-size: 0.75rem;
+    color: var(--ss-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .ss-runx1-card__title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0;
+    color: var(--ss-text);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .ss-runx1-card__summary {
+    font-size: 0.875rem;
+    line-height: 1.45;
+    color: var(--ss-text-muted);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .ss-runx1-card__footer {
+    margin-top: auto;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--ss-card-border);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--ss-text-muted);
+  }
+
+  .ss-runx1-card__author-photo {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #e5e7eb;
+    flex-shrink: 0;
+  }
+
+  .ss-runx1-card__author-initials {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--ss-accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .ss-runx1-card__author-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .ss-runx1-footer-link {
+    display: block;
+    text-align: center;
+    margin-top: 2rem;
+    color: var(--ss-accent);
+    text-decoration: underline;
+    font-size: 0.9rem;
+  }
+</style>
+
+<script>
+(function () {
+  /* ═══════════════════════════════════════════════════════════════════════
+     CONFIGURATION — edit these
+     ═══════════════════════════════════════════════════════════════════════ */
+  var API_URL = "https://ssrunx1.vercel.app/api/embed/articles";
+  var API_KEY = "YOUR_API_KEY";            // replace with the real key
+  var ARTICLE_LIMIT = 30;
+  var OPEN_IN_NEW_TAB = true;
+  var SHOW_FOOTER_LINK = true;             // "See all articles →" link at the bottom
+  /* ═══════════════════════════════════════════════════════════════════════ */
+
+  var container = document.getElementById("ss-runx1-articles");
+  if (!container) return;
+
+  function escapeHtml(str) {
+    if (str == null) return "";
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function formatDate(iso) {
+    if (!iso) return "";
+    try {
+      var d = new Date(iso);
+      return d.toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      });
+    } catch (e) {
+      return iso;
+    }
+  }
+
+  function getInitials(name) {
+    if (!name) return "?";
+    return name
+      .split(/\s+/)
+      .map(function (s) { return s[0]; })
+      .filter(Boolean)
+      .slice(0, 2)
+      .join("")
+      .toUpperCase();
+  }
+
+  function buildCard(a) {
+    var target = OPEN_IN_NEW_TAB ? ' target="_blank" rel="noopener noreferrer"' : "";
+    var imageHtml = a.image_url
+      ? '<div class="ss-runx1-card__image-wrap"><img class="ss-runx1-card__image" src="' +
+          escapeHtml(a.image_url) +
+          '" alt="' +
+          escapeHtml(a.title) +
+          '" loading="lazy" /></div>'
+      : "";
+
+    var certifier = a.certified_by;
+    var authorBlock = "";
+    if (certifier && certifier.name) {
+      var photo = certifier.photo
+        ? '<img class="ss-runx1-card__author-photo" src="' +
+            escapeHtml(certifier.photo) +
+            '" alt="' +
+            escapeHtml(certifier.name) +
+            '" />'
+        : '<span class="ss-runx1-card__author-initials">' +
+            escapeHtml(getInitials(certifier.name)) +
+            "</span>";
+      authorBlock =
+        '<div class="ss-runx1-card__footer">' +
+        photo +
+        '<span class="ss-runx1-card__author-name">Reviewed by ' +
+        escapeHtml(certifier.name) +
+        (certifier.degree ? ", " + escapeHtml(certifier.degree) : "") +
+        "</span></div>";
+    }
+
+    return (
+      '<a class="ss-runx1-card" href="' +
+      escapeHtml(a.url) +
+      '"' +
+      target +
+      ">" +
+      imageHtml +
+      '<div class="ss-runx1-card__body">' +
+      (a.publication_date
+        ? '<span class="ss-runx1-card__date">' +
+          escapeHtml(formatDate(a.publication_date)) +
+          "</span>"
+        : "") +
+      '<h3 class="ss-runx1-card__title">' +
+      escapeHtml(a.title) +
+      "</h3>" +
+      (a.summary
+        ? '<p class="ss-runx1-card__summary">' +
+          escapeHtml(a.summary.replace(/<[^>]+>/g, "")) +
+          "</p>"
+        : "") +
+      authorBlock +
+      "</div></a>"
+    );
+  }
+
+  function render(articles, tenantUrl) {
+    if (!articles || articles.length === 0) {
+      container.innerHTML =
+        '<div class="ss-runx1-empty">No articles available yet — check back soon.</div>';
+      return;
+    }
+
+    var grid =
+      '<div class="ss-runx1-grid">' +
+      articles.map(buildCard).join("") +
+      "</div>";
+
+    var footer = "";
+    if (SHOW_FOOTER_LINK && tenantUrl) {
+      var target = OPEN_IN_NEW_TAB ? ' target="_blank" rel="noopener noreferrer"' : "";
+      footer =
+        '<a class="ss-runx1-footer-link" href="' +
+        escapeHtml(tenantUrl) +
+        '/articles"' +
+        target +
+        ">See all articles on RUNX1 Simplified →</a>";
+    }
+
+    container.innerHTML = grid + footer;
+  }
+
+  function showError(msg) {
+    container.innerHTML =
+      '<div class="ss-runx1-error">Unable to load articles. ' +
+      escapeHtml(msg || "Please try again later.") +
+      "</div>";
+  }
+
+  fetch(API_URL + "?limit=" + ARTICLE_LIMIT, {
+    headers: { "X-API-Key": API_KEY },
+  })
+    .then(function (r) {
+      if (!r.ok) throw new Error("Status " + r.status);
+      return r.json();
+    })
+    .then(function (data) {
+      if (!data.success) {
+        showError(data.error);
+        return;
+      }
+      render(data.articles, data.tenant_url);
+    })
+    .catch(function (err) {
+      console.error("[RUNX1 embed]", err);
+      showError(err.message);
+    });
+})();
+</script>

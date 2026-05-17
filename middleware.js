@@ -34,6 +34,7 @@ const PUBLIC_API_PREFIXES = [
   "/api/magic-link/verify", // magic link redemption
   "/api/images/upload-image", // image uploads happen during signup/profile
   "/api/profile",          // public profile reads
+  "/api/embed",            // partner embed endpoints (API-key gated internally)
 ];
 
 function isPublicPath(pathname) {

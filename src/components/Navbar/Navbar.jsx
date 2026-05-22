@@ -42,6 +42,12 @@ export default function Navbar() {
         }
         let mounted = true;
         async function load() {
+            // Skip when tab is hidden — assignments change rarely, so there's
+            // no value in polling background tabs (and it keeps the Neon
+            // compute awake unnecessarily).
+            if (typeof document !== "undefined" && document.visibilityState === "hidden") {
+                return;
+            }
             try {
                 const res = await fetch("/api/notifications/my-counts", { cache: "no-store" });
                 if (!res.ok) return;
@@ -58,11 +64,18 @@ export default function Navbar() {
             }
         }
         load();
-        // refresh every 60s while logged in
-        const interval = setInterval(load, 60000);
+        // Poll every 5 minutes while the tab is visible.
+        const interval = setInterval(load, 5 * 60 * 1000);
+        // When the tab becomes visible again, refresh immediately so the
+        // badge feels responsive after returning to the tab.
+        const onVisibility = () => {
+            if (document.visibilityState === "visible") load();
+        };
+        document.addEventListener("visibilitychange", onVisibility);
         return () => {
             mounted = false;
             clearInterval(interval);
+            document.removeEventListener("visibilitychange", onVisibility);
         };
     }, [user, isAdmin, role, pathname]);
 
